@@ -53,4 +53,29 @@ $(document).ready(function() {
 
 
 
+    $("#driver").click(function(event) {
+        $('#stage').load('https://www.tutorialspoint.com/jquery/result.html');
+    });
+
+
+    $("#json_driver").click(function(event) {
+        $.getJSON('https://www.tutorialspoint.com/jquery/result.json', function(jd) {
+            $('#stage').html('<p> Name: ' + jd.name + '</p>');
+            $('#stage').append('<p>Age : ' + jd.age + '</p>');
+            $('#stage').append('<p> Sex: ' + jd.sex + '</p>');
+        });
+    });
+
+    $("#wiki_driver").click(function(event) {
+        var wiki_url = "https://api.imgflip.com/get_memes"
+        $.getJSON(wiki_url, function(jd) {
+            $('#stage').html('<p> Name: ' + jd.success + '</p>');
+            num = jd.data.memes.length;
+            index = Math.floor(Math.random() * num);
+            $('#stage_img').attr("src", jd.data.memes[index].url);
+        });
+    });
+
+
+
 });
