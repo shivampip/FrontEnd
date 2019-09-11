@@ -76,6 +76,17 @@ $(document).ready(function() {
         });
     });
 
+    $("#show_effect").click(function() {
+        $("#effect_h4").show(1000);
+    });
+    $("#hide_effect").click(function() {
+        $("#effect_h4").hide(1000);
+    });
 
+    $("#toggle_effect").click(function(event) {
+        $("#effect_h4").toggle('slow', function() {
+            alert("Animation completed");
+        });
+    });
 
 });
