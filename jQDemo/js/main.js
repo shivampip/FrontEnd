@@ -89,4 +89,17 @@ $(document).ready(function() {
         });
     });
 
+
+    (function worker() {
+        var wiki_url = "https://api.imgflip.com/get_memes"
+        $.getJSON(wiki_url, function(jd) {
+            $('#stage').html('<p> Name: ' + jd.success + '</p>');
+            num = jd.data.memes.length;
+            index = Math.floor(Math.random() * num);
+            $('#stage_img').attr("src", jd.data.memes[index].url);
+            // Schedule the next request when the current one's complete
+            setTimeout(worker, 5000);
+        });
+    })();
+
 });
