@@ -1,0 +1,77 @@
+html, body{
+    background-color: #c1c1c1;
+    height: 100%;
+    margin: 0px;
+}
+
+
+.container{
+    width: 50%;
+    height: 100%;
+    margin-bottom: 0px;
+    background-color: white;
+    text-align: center;
+    margin: auto;
+}
+
+h1{
+    color: black;
+    padding: 20px;
+}
+
+.controls{
+    width: 60%;
+    margin: auto;
+}
+
+#inputEt{
+    width: 100%;
+    height: 3.5em;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: #000000 solid 2px;
+}
+
+#addB{
+    width: 100%;
+    height: 3.5em;
+    margin-bottom: 10px;
+    background-color: green;
+    color: white;
+    border-radius: 20px;
+    border: #000000 solid 2px;
+}
+
+#removeB{
+    width: 100%;
+    height: 3.5em;
+    margin-bottom: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 20px;
+    border: #000000 solid 2px;
+}
+
+#list{
+    width: 50%;
+    text-align: center;
+    margin: auto; 
+}
+
+
+.item{
+    width: 100%;
+    height: 2.5em;
+    margin-bottom: 10px;
+    list-style: none;
+    border-radius: 20px;
+    border: #000000 solid 2px;
+    display: inline-block;
+}
+
+.check{
+    float: left;
+    width: 20px;
+    height: 20px;
+}
+
