@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .myClass {
+            color: blue;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>It's jQuery</h3>
+
+    <div id="container">
+        <button id="btn1">Click Me</button>
+
+        <p class="para1">This is a paragraph</p>
+        <p class="para2">This is another paragraph</p>
+
+        <button id="toggleClsB">Toggle Class</button>
+        <p class="para3">This is the Target</p>
+
+        <div id="myDiv"></div>
+
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+
+
+        <a href="https://www.google.com/">Google</a>
+
+        <input type="text" id="nameIT">
+
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+            //alert("Welcome Back")
+
+            $("p.para1").css("color", "purple");
+
+            $("p.para2").css({
+                color: "rad",
+                background: "yellow",
+            });
+
+            $("p.para1").addClass("myClass");
+            //$("p.para1").removeClass("myClass");
+
+            $("#toggleClsB").on("click", function() {
+                $("p.para3").toggleClass("myClass");
+            });
+
+            //$("#myDiv").text("Hello Word");
+            $("#myDiv").html("<h3>Hello</h3>");
+            //alert($("#myDiv").text());
+
+            $("ul").append("<li>Appended Item</li>");
+            $("ul").prepend("<li>Prepanneded Item</li>");
+
+            // append 1 element to other (put inside)
+            $(".para1").appendTo(".para3");
+            //$(".para1").prependTo(".para3");
+
+            $("ul").before("<h3>It has been put before ul</h3>");
+            $("ul").after("<h3>It has been put after ul</h3>");
+
+            //remove all child
+            //$("ul").empty();
+
+            //remove self
+            //$("ul").detach();
+
+            $("a").attr("target", "_blank");
+
+            let a_link = $("a").attr("href");
+            //alert(a_link);
+
+            $("a").removeAttr("target");
+
+            // wrap .para3 in h2 (wrap all element with this class separately)
+            $(".para3").wrap("<h2>");
+
+            // wrap .para3 in h2 (wrap all element with this class in one h2)
+            $(".para3").wrapAll("<h2>");
+
+            $("#nameIT").keyup(function(eve) {
+                var code = eve.which;
+                if (code == 13) { //enter
+                    eve.preventDefault();
+                    $("ul").append("<li>" + $(this).val() + "</li>");
+                }
+            });
+
+
+            var myArr = ["Ram", "Shivam", "Sun", "Python"];
+            $.each(myArr, function(index, value) {
+                console.log(`Index: ${index}, Value:${value}`);
+            });
+
+
+            //read html list etc
+            var newArr = $("ul li").toArray();
+            $.each(newArr, function(i, val) {
+                console.log(val.innerHTML);
+            });
+
+
+
+
+
+
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>

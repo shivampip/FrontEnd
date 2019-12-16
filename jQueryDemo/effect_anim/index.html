@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .myClass {
+            color: blue;
+            background-color: aqua;
+        }
+        
+        #box {
+            width: 200px;
+            margin: 20px;
+            padding: 50px 20px;
+            background-color: blueviolet;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>It's jQuery</h3>
+
+    <div id="container">
+
+        <button id="fadeInB">Fade In</button>
+        <button id="fadeOutB">Fade Out</button>
+        <button id="fadeTogB">Fade Toggle</button>
+        <br>
+
+        <button id="slideUpB">Slide Up</button>
+        <button id="slideDownB">Slide Down</button>
+        <button id="slideTogB">Slide Toggle</button>
+        <button id="slideStopB">Slide Stop</button>
+        <br>
+
+        <button id="moveLeftB">Move Left</button>
+        <button id="moveRightB">Move Right</button>
+        <button id="moveAroundB">Move Around</button>
+
+
+        <div id="box">
+            <h3>Shivam</h3>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+            //alert("Welcome Back")
+
+            $("#fadeOutB").on('click', function() {
+                $("#box").fadeOut();
+            });
+
+            $("#fadeInB").on('click', function() {
+                //$("#box").fadeIn("slow");
+                //$("#box").fadeIn(5000);
+                $("#box").fadeIn(3000, function() {
+                    $("#fadeInB").text("It has come completely");
+                });
+            });
+
+            $("#fadeTogB").on('click', function() {
+                $("#box").fadeToggle();
+            });
+
+
+            $("#slideUpB").on("click", function() {
+                $("#box").slideUp();
+            });
+
+
+            $("#slideDownB").on("click", function() {
+                $("#box").slideDown();
+            });
+
+            $("#slideTogB").on("click", function() {
+                $("#box").slideToggle(5000);
+            });
+
+            $("#slideStopB").click(function() {
+                $("#box").stop();
+            });
+
+            // div must have css position: relative
+            $("#moveLeftB").click(function() {
+                $("#box").animate({
+                    left: 500,
+                    height: '300px',
+                    opacity: 0.5
+                })
+            });
+
+            $("#moveRightB").click(function() {
+                $("#box").animate({
+                    left: 0,
+                    height: '100px',
+                    opacity: 1
+                });
+            });
+
+            $("#moveAroundB").click(function() {
+                let box = $("#box");
+                box.animate({
+                    left: 300
+                });
+
+                box.animate({
+                    top: 300
+                });
+
+                box.animate({
+                    left: 0,
+                    top: 300
+                });
+
+                box.animate({
+                    left: 0,
+                    top: 0
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>

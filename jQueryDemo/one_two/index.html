@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h3>Hello to jQuery</h3>
+
+    <button id="btn1">Button1</button>
+    <button id="btn2">Button2</button>
+    <button id="showB">Show</button>
+    <button id="hideB">Hide</button>
+    <button id="toggB">Toggle</button>
+    <button id="sampB">Sample</button>
+    <button id="hoverB">Hover Me</button>
+    <button id="mouseEnterB">Bring Pointer here</button>
+    <button id="keepMouseB">Keep Me Pressed</button>
+
+    <p class="para1">This is sample para. which will be hidden on click</p>
+
+    <br><br>
+
+    <button id="eventInfoB">Event Info</button>
+    <button id="cordB" style="padding: 20px">Pointer Cordinates</button>
+    <br><br>
+
+    <form id="myform">
+        <label>Name</label><br>
+        <input type="text" id="name" name="name">
+        <br>
+
+        <label>Email</label><br>
+        <input type="email" id="email" name="email">
+        <br>
+
+        <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <br>
+
+        <input type="submit" value="Submit">
+
+        <br><br>
+        <p id="msgP">Message</p>
+
+    </form>
+
+
+    <script src="main.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function() {
+                alert("Button 1 clicked");
+            })
+
+            $("#btn2").on("click", function() {
+                alert("Button 2 clicked");
+            });
+
+            $("#showB").on("click", function() {
+                $(".para1").show();
+            });
+
+            $("#hideB").on("click", function() {
+                $(".para1").hide();
+            });
+
+            $("#toggB").on("click", function() {
+                $(".para1").toggle();
+            });
+
+            $("#toggB, #sampB").dblclick(function() {
+                alert("Keep calm, don't double click");
+            });
+
+            $("#hoverB").hover(function() {
+                $(".para1").toggle();
+            });
+
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            /* mouseenter, mouseleave, mousemove */
+            $("#mouseEnterB").on("mousemove", function() {
+                $(".para1").css("color", getRandomColor());
+            });
+
+            $("#keepMouseB").on("mousedown", function() {
+                $(".para1").css("font-weight", "bold");
+            });
+
+            $("#keepMouseB").on("mouseup", function() {
+                $(".para1").css("font-weight", "normal");
+            });
+
+            $("#eventInfoB").on("click", function(eve) {
+                alert("Check console");
+                console.log(eve);
+            })
+
+            //$(document).on("mousemove", ...) // For tracking mouse movement in everywhere
+            $("#cordB").on("mousemove", function(eve) {
+                let x = eve.clientX;
+                let y = eve.clientY;
+                eve.target.textContent = "X: " + x + " Y: " + y;
+            })
+
+
+            $("input").focus(function(eve) {
+                // this refers to current element
+                $(this).css("background", "blue");
+            })
+
+            // opposite to focus
+            $("input").blur(function(eve) {
+                // this refers to current element
+                $(this).css("background", "white");
+            })
+
+            $('input').keydown(function(eve) {
+                $("#msgP").html(eve.target.value);
+            });
+
+            $("select#gender").change(function(eve) {
+                $("#msgP").html("Choice changed to " + eve.target.value);
+            });
+
+            $("#myform").submit(function(eve) {
+                eve.preventDefault();
+                $("#msgP").html("Form submitting...");
+
+                let name = $("input#name").val();
+                let email = $("input#email").val();
+
+                $("#msgP").html(`Name is ${name} and Email is ${email}`);
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

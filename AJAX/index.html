@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX Demo</title>
+</head>
+
+<body>
+    <h3>Welcome to AJAX ji</h3>
+
+    <button id="getTextB">Get Text File</button>
+
+
+
+    <script>
+        // WITH VANILLA JAVASCRIPT
+
+        function print(msg) {
+            console.log(msg);
+        }
+
+        document.getElementById("getTextB").addEventListener("click", loadText);
+
+        function loadText() {
+            //Create XHR Object
+            var xhr = new XMLHttpRequest();
+            //print(xhr);
+
+            // Open= type ,url/file, async
+            xhr.open("GET", "sample.txt", true);
+
+            xhr.onprogress = function() {
+                print("readyState: " + xhr.readyState);
+            }
+
+            xhr.onload = function() {
+                print("readyState: " + xhr.readyState);
+                if (this.status == 200) {
+                    print("REQUEST OK");
+                    print(this.responseText);
+                } else if (this.status == 404) {
+                    print("File nahi mili Guru");
+                } else {
+                    print("Error: " + this.status);
+                }
+            }
+
+            xhr.onerror = function() {
+                print("Error in request");
+            }
+
+            /*
+            // readyState values
+            // 0: request not initiated
+            // 1: server connection established
+            // 2: request received
+            // 3: processing request
+            // 4: request finished and response is ready
+            print("readyState: " + xhr.readyState);
+            xhr.onreadystatechange = function() {
+                print("readyState: " + this.readyState);
+                if (this.readyState == 4 && this.status == 200) {
+                    print(this.responseText);
+                }
+            }*/
+
+            xhr.send();
+
+        } //loadTextEND
+
+
+
+        //Done
+    </script>
+</body>
+
+</html>

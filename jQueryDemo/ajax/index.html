@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .myClass {
+            color: blue;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>It's jQuery</h3>
+
+    <div id="container">
+
+        <div id="resultDiv">
+
+        </div>
+
+        <ul id="userUl">
+
+        </ul>
+
+        <table style="border: 2px solid black;">
+
+        </table>
+
+        <h4>Add Post</h4>
+        <form id="postForm" action="https://jsonplaceholder.typicode.com/posts">
+            <input type="text" id="title" placeholder="Title">
+            <textarea placeholder="Boday" id="body"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+            //alert("Welcome Back")
+
+            //$("#resultDiv").load('test.html');
+            /*
+            $("#resultDiv").load('test.html', function(
+                responseTxt, statusTxt, xhr) {
+                if (statusTxt == "success") {
+                    alert("It went fine");
+                } else if (statusTxt == "error") {
+                    alert("Error: " + xhr.statusText);
+                }
+            });
+            */
+
+            /*
+            $.get("test.html", function(data) {
+                $("#resultDiv").html(data);
+            });
+            */
+
+
+            /*
+            $.getJSON("users.json", function(data) {
+                $.each(data, function(i, user) {
+                    $("ul#userUl").append("<li>" + user.fname + "</li>");
+                    $("table").append(`<tr>
+                        <td> ${user.fname} </td>
+                        <td> ${user.lname} </td>
+                        <td> ${user.num} </td>
+                    </tr>`);
+                });
+            });
+            */
+
+
+            // Wow finally AJAX :)
+            /*
+            $.ajax({
+                method: "GET",
+                url: "https://jsonplaceholder.typicode.com/posts",
+                dataType: "json",
+            }).done(function(data) {
+                console.log(data);
+                //map is alternative to each
+                $.map(data, function(post, index) {
+                    $("table").append(`<tr>
+                        <td> ${post.title} </td>
+                        <td> ${post.body} </td>
+                    </tr>`);
+                });
+            });
+            */
+
+
+            $("#postForm").submit(function(eve) {
+                eve.preventDefault();
+
+                var title = $("#title").val();
+                var body = $("#body").val();
+                var url = $(this).attr("action");
+
+                $.post(url, {
+                    title: title,
+                    body: body
+                }).done(function(data) {
+                    console.log("Post Saved");
+                    console.log(data);
+                });
+
+
+
+            });
+
+
+
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>
