@@ -9,14 +9,19 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
-        .box {
+        #boxWrapper{
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+            margin: 20px;
+        }
+        #box {
             width: 100px;
             height: 100px;
             background-color: blueviolet;
-            margin: 20px;
         }
         
-        .target {
+        #target {
             width: 600px;
             height: 200px;
             margin: 20px;
@@ -30,13 +35,63 @@
 
     <p id="msgP">Messages</p>
 
-    <div class="box"></div>
-    <div class="box"></div>
+    <div id="boxWrapper">
+        <div id="box"></div>
+    </div>
 
-    <div class="target"></div>
+    <div id="target"></div>
 
 
+    
+    
     <script>
+        
+        function print(msg){
+            console.log(msg);
+        }
+        
+        let draggableVal= {
+          start: function() {
+              print("Drag Started");
+          },
+          drag: function() {
+              print("Drag in progress");
+          },
+          stop: function() {
+              print("Drag Stopped");
+          }
+        }
+        
+        $("#box").draggable(draggableVal);
+    
+        
+        function recreateBox(){
+            $("body").append("<div id='boxWrapper'></div>");
+            $("#boxWrapper").append("<div id='box'></div>");
+            print($("#box"));
+            $("#box").draggable();
+            print($("#box"));
+        }
+        
+        
+        $("#target").droppable({
+            drop: function(eve, ui){
+                print("Dropped");
+                $(this).css("background", "#ddd"); //targer
+                ui.draggable.css("background", "red");  //box
+                
+                //$("#box").appendTo($(this));
+                $("#box").unwrap();
+                $("#box").removeClass("box");
+                
+                recreateBox();
+                
+            } 
+        });
+    
+    
+    </script>
+    <!--<script>
         function print(msg) {
             console.log(msg);
         }
@@ -61,23 +116,29 @@
             stop: function() {
                 display("Drag Stopped");
             },
-            revert: true,
+            //revert: true,
             helper: "clone",
-            snap: ".target",
-            snapMode: "inner"
+            //snap: ".target",
+            //snapMode: "inner"
         });
 
 
         target = $(".target");
         target.droppable({
             accept: ".box",
+            greedy: true,
             drop: function(eve, ui) {
                 print("dropped");
                 print(ui);
-                $(this).appendChild(ui);
+                var target= $(eve.target);
+                //$(ui.draggable).clone().appendTo(target);
+                //target.appendChild($(ui.draggable).clone());
+                //var new_signature = $(ui.helper).clone().removeClass('box');
+                //new_signature.draggable();
+                //$(this).appendChild(new_signature);
             }
         });
-    </script>
+    </script>-->
 </body>
 
 </html>
