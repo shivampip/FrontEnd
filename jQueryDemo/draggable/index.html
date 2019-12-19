@@ -160,16 +160,31 @@
                     //$(this).css("width", "");
                 },
                 //revert: true,
-                helper: "clone"
+                revert: function(dropped) {
+                    print("Dropped is this");
+                    print(dropped);
+                    var dropped = dropped && dropped.hasClass("droppable");
+                    if (!dropped) {
+                        print("Dropped Outside");
+                        //$(".draggable").draggable("option", "revertDuration", 200);
+                        return true;
+                    } else {
+                        print("Dropped inside");
+                        //$(".draggable").draggable("option", "revertDuration", 0);
+                        return true;
+                    }
+                },
+                revertDuration: 0, //how much time, it will take to revert
+                helper: "clone",
+                //connectToSortable: ".droppable"
             });
 
 
 
             $(".droppable").droppable({
-                classes: {
-                    "ui-target-active": "targetActive",
-                    "ui-target-hover": "targerHover"
-                },
+                accept: ".draggable",
+                activeClass: 'ui-state-hover',
+                hoverClass: 'ui-state-active',
                 drop: function(eve, ui) {
                     print("Dropped");
 
@@ -180,6 +195,11 @@
                     newbox.appendTo($(this));
 
                 }
+            });
+
+
+            $("#workContainer").sortable({
+                revert: true
             });
         </script>
 </body>
