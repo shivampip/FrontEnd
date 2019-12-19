@@ -71,6 +71,14 @@
             color: white;
             margin: auto;
         }
+        
+        .ui-state-active {
+            background-color: yellow;
+        }
+        
+        .ui-state-hover {
+            background-color: rgb(255, 187, 0);
+        }
     </style>
 </head>
 
@@ -148,7 +156,7 @@
                 start: function(eve, ui) {
                     print("Drag Started");
                     //$(this).css("width", "100px");
-                    $(ui.helper).css("width", "170px")
+                    $(ui.helper).css("width", "170px") //customize helper
                     $(ui.helper).css("box-shadow", "0px 0px 18px 4px rgba(0,0,0,0.47)");
 
                 },
@@ -183,8 +191,8 @@
 
             $(".droppable").droppable({
                 accept: ".draggable",
-                activeClass: 'ui-state-hover',
-                hoverClass: 'ui-state-active',
+                activeClass: 'ui-state-active',
+                hoverClass: 'ui-state-hover',
                 drop: function(eve, ui) {
                     print("Dropped");
 
