@@ -9,30 +9,67 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
-        #boxWrapper {
-            width: 100px;
-            height: 100px;
-            background-color: greenyellow;
-            margin: 20px;
+        body {
+            /*font-family: Lucida Console;*/
+            font-family: Verdana;
         }
         
-        .box {
-            width: 100px;
-            height: 100px;
-            background-color: blueviolet;
-            margin: 0px;
-        }
-        
-        #target {
-            width: 505px;
-            height: auto;
-            margin: 20px;
-            background-color: #eee;
+        #mainWrapper {
+            width: 100%;
+            height: 700px;
             display: grid;
-            grid-column-gap: 1px;
-            grid-row-gap: 1px;
-            grid-template-columns: repeat(5, 1fr);
-            padding: 20px;
+            grid-template-columns: auto 400px;
+            background-color: #eee;
+        }
+        
+        #itemPanel {
+            margin: 20px;
+            background-color: white;
+            padding: 5px;
+        }
+        
+        #itemContainer {
+            display: grid;
+            /*grid-template-rows: repeat(7, minmax(50px, auto));*/
+            grid-template-columns: 1fr 1fr;
+            row-gap: 5px;
+            column-gap: 5px;
+        }
+        
+        .item {
+            background-color: blueviolet;
+            display: inline-flex;
+            border-radius: 5px;
+        }
+        
+        .item>div {
+            color: white;
+            margin: auto;
+        }
+        
+        #workPanel {
+            margin: 20px;
+            margin-right: 0;
+            background-color: white;
+            padding: 5px;
+        }
+        
+        #workContainer {
+            display: grid;
+            grid-template-rows: repeat(7, minmax(100px, auto));
+            row-gap: 5px;
+            column-gap: 5px;
+        }
+        
+        .workItem {
+            background-color: rgb(229, 189, 255);
+            display: inline-flex;
+            border-radius: 5px;
+        }
+        
+        .workItem>div {
+            color: white;
+            margin: auto;
         }
     </style>
 </head>
@@ -42,110 +79,109 @@
 
     <p id="msgP">Messages</p>
 
-    <div id="boxWrapper">
-        <div class="dbox box"></div>
-    </div>
 
-    <div id="target">
 
-        <div class="box"></div>
-    </div>
+    <div id="mainWrapper">
+
+        <div id="workPanel">
+            <div id="workContainer" class="droppable">
 
 
 
-
-    <script>
-        function print(msg) {
-            console.log(msg);
-        }
-
-        $(".dbox").draggable({
-            start: function() {
-                print("Drag Started");
-            },
-            drag: function() {
-                print("Drag in progress");
-            },
-            stop: function() {
-                print("Drag Stopped");
-            },
-            //revert: true,
-            helper: "clone"
-        });
+                <div class="workItem">
+                    <div>
+                        <p>Text Area</p>
+                    </div>
+                </div>
 
 
+            </div>
+        </div>
 
-        $("#target").droppable({
-            drop: function(eve, ui) {
-                print("Dropped");
-                $(this).css("background", "#ddd"); //targer
-                //ui.draggable.css("background", "red"); //box
-
-                //$("#box").appendTo($(this));
-                //$(this).append("<div class='box'></div>");
-
-                newbox = ui.draggable.clone();
-                newbox.removeClass("dbox");
-                print(newbox);
-                newbox.appendTo($(this));
+        <div id="itemPanel">
+            <div id="itemContainer">
 
 
-                //$("#box").unwrap();
-                //$("#box").removeClass("box");
+                <div class="item draggable">
+                    <div>
+                        <p>Text Field</p>
+                    </div>
+                </div>
 
-                //recreateBox();
+                <div class="item draggable">
+                    <div>
+                        <p>Text Area</p>
+                    </div>
+                </div>
 
+                <div class="item draggable">
+                    <div>
+                        <p>Select</p>
+                    </div>
+                </div>
+
+                <div class="item draggable">
+                    <div>
+                        <p>Time</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <script>
+            function print(msg) {
+                console.log(msg);
             }
-        });
-    </script>
-    <!--<script>
-        function print(msg) {
-            console.log(msg);
-        }
 
-        function display(msg) {
-            $("#msgP").text(msg);
-        }
+            $(".draggable").draggable({
+                start: function(eve, ui) {
+                    print("Drag Started");
+                    //$(this).css("width", "100px");
+                    $(ui.helper).css("width", "170px")
+                    $(ui.helper).css("box-shadow", "0px 0px 18px 4px rgba(0,0,0,0.47)");
 
-        box = $(".box");
-        box.draggable({
-            cursor: "move",
-            cursorAt: {
-                top: 50,
-                left: 50
-            },
-            start: function() {
-                display("Drag Started");
-            },
-            drag: function() {
-                display("Drag in progress");
-            },
-            stop: function() {
-                display("Drag Stopped");
-            },
-            //revert: true,
-            helper: "clone",
-            //snap: ".target",
-            //snapMode: "inner"
-        });
+                },
+                drag: function() {
+                    print("Drag in progress");
+                },
+                stop: function() {
+                    print("Drag Stopped");
+                    //$(this).css("width", "");
+                },
+                //revert: true,
+                helper: "clone"
+            });
 
 
-        target = $(".target");
-        target.droppable({
-            accept: ".box",
-            greedy: true,
-            drop: function(eve, ui) {
-                print("dropped");
-                print(ui);
-                var target= $(eve.target);
-                //$(ui.draggable).clone().appendTo(target);
-                //target.appendChild($(ui.draggable).clone());
-                //var new_signature = $(ui.helper).clone().removeClass('box');
-                //new_signature.draggable();
-                //$(this).appendChild(new_signature);
-            }
-        });
-    </script>-->
+
+            $(".droppable").droppable({
+                classes: {
+                    "ui-target-active": "targetActive",
+                    "ui-target-hover": "targerHover"
+                },
+                drop: function(eve, ui) {
+                    print("Dropped");
+
+                    newbox = ui.draggable.clone();
+                    newbox.removeClass("draggable");
+                    newbox.css("width", "");
+                    print(newbox);
+                    newbox.appendTo($(this));
+
+                }
+            });
+        </script>
 </body>
 
 </html>

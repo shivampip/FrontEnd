@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drag N Drop Demo</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        #boxWrapper {
+            width: 400px;
+            height: 100px;
+            background-color: #eee;
+            margin: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+            margin: 0px;
+        }
+        
+        .redbox {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 0px;
+        }
+        
+        .greenbox {
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+            margin: 0px;
+        }
+        
+        .bluebox {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(6, 193, 250);
+            margin: 0px;
+        }
+        
+        .target {
+            width: 505px;
+            height: auto;
+            margin: 20px;
+            background-color: #eee;
+            display: grid;
+            grid-column-gap: 1px;
+            grid-row-gap: 1px;
+            grid-template-columns: repeat(5, 1fr);
+            padding: 20px;
+        }
+        
+        .targetActive {
+            background-color: aqua;
+        }
+        
+        .targetHover {
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Welcome to Drag-N-Drop</h3>
+
+    <p id="msgP">Messages</p>
+
+    <div id="boxWrapper">
+        <div class="draggable box"></div>
+        <div class="draggable redbox"></div>
+        <div class="draggable bluebox"></div>
+        <div class="draggable greenbox"></div>
+    </div>
+
+    <div class="target">
+        <div class="box"></div>
+    </div>
+
+
+
+
+    <script>
+        function print(msg) {
+            console.log(msg);
+        }
+
+        $(".draggable").draggable({
+            start: function() {
+                print("Drag Started");
+            },
+            drag: function() {
+                print("Drag in progress");
+            },
+            stop: function() {
+                print("Drag Stopped");
+            },
+            //revert: true,
+            helper: "clone"
+        });
+
+
+
+        $(".target").droppable({
+            classes: {
+                "ui-target-active": "targetActive",
+                "ui-target-hover": "targerHover"
+            },
+            drop: function(eve, ui) {
+                print("Dropped");
+                $(this).css("background", "#ddd"); //targer
+                //ui.draggable.css("background", "red"); //box
+
+                //$("#box").appendTo($(this));
+                //$(this).append("<div class='box'></div>");
+
+                newbox = ui.draggable.clone();
+                newbox.removeClass("draggable");
+                print(newbox);
+                newbox.appendTo($(this));
+
+
+                //$("#box").unwrap();
+                //$("#box").removeClass("box");
+
+                //recreateBox();
+
+            }
+        });
+    </script>
+    <!--<script>
+        function print(msg) {
+            console.log(msg);
+        }
+
+        function display(msg) {
+            $("#msgP").text(msg);
+        }
+
+        box = $(".box");
+        box.draggable({
+            cursor: "move",
+            cursorAt: {
+                top: 50,
+                left: 50
+            },
+            start: function() {
+                display("Drag Started");
+            },
+            drag: function() {
+                display("Drag in progress");
+            },
+            stop: function() {
+                display("Drag Stopped");
+            },
+            //revert: true,
+            helper: "clone",
+            //snap: ".target",
+            //snapMode: "inner"
+        });
+
+
+        target = $(".target");
+        target.droppable({
+            accept: ".box",
+            greedy: true,
+            drop: function(eve, ui) {
+                print("dropped");
+                print(ui);
+                var target= $(eve.target);
+                //$(ui.draggable).clone().appendTo(target);
+                //target.appendChild($(ui.draggable).clone());
+                //var new_signature = $(ui.helper).clone().removeClass('box');
+                //new_signature.draggable();
+                //$(this).appendChild(new_signature);
+            }
+        });
+    </script>-->
+</body>
+
+</html>
