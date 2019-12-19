@@ -32,6 +32,7 @@
             grid-column-gap: 1px;
             grid-row-gap: 1px;
             grid-template-columns: repeat(5, 1fr);
+            padding: 20px;
         }
     </style>
 </head>
@@ -42,7 +43,7 @@
     <p id="msgP">Messages</p>
 
     <div id="boxWrapper">
-        <div id="dbox" class="box"></div>
+        <div class="dbox box"></div>
     </div>
 
     <div id="target">
@@ -58,7 +59,7 @@
             console.log(msg);
         }
 
-        $("#dbox").draggable({
+        $(".dbox").draggable({
             start: function() {
                 print("Drag Started");
             },
@@ -81,7 +82,14 @@
                 //ui.draggable.css("background", "red"); //box
 
                 //$("#box").appendTo($(this));
-                $(this).append("<div class='box'></div>");
+                //$(this).append("<div class='box'></div>");
+
+                newbox = ui.draggable.clone();
+                newbox.removeClass("dbox");
+                print(newbox);
+                newbox.appendTo($(this));
+
+
                 //$("#box").unwrap();
                 //$("#box").removeClass("box");
 
