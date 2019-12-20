@@ -8,188 +8,7 @@
     <title>Drag N Drop Demo</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <style>
-        body {
-            /*font-family: Lucida Console;*/
-            font-family: Verdana;
-            background-color: #ddd;
-        }
-
-        #pageHeader {
-            text-align: center;
-        }
-
-        #mainWrapper {
-            width: 80%;
-            margin: 0 auto;
-            height: 700px;
-            display: grid;
-            grid-template-columns: auto 400px;
-            background-color: #eee;
-        }
-
-        #itemPanel {
-            margin: 20px;
-            background-color: white;
-            padding: 5px;
-        }
-
-        #itemContainer {
-            display: grid;
-            /*grid-template-rows: repeat(7, minmax(50px, auto));*/
-            grid-template-columns: 1fr 1fr;
-            row-gap: 5px;
-            column-gap: 5px;
-        }
-
-        .item {
-            background-color: blueviolet;
-            display: inline-flex;
-            border-radius: 5px;
-        }
-
-        .item>div {
-            color: white;
-            margin: auto;
-        }
-
-        #workPanel {
-            margin: 20px;
-            margin-right: 0;
-            background-color: #ccc;
-            padding: 10px;
-        }
-
-        #workContainer {
-            display: grid;
-            grid-template-rows: repeat(auto, minmax(100px, auto));
-            row-gap: 5px;
-            column-gap: 5px;
-            padding-bottom: 130px;
-        }
-
-        #dropview {
-            border: 5px dotted #aaa;
-            height: 100px;
-            margin-top: -120px;
-            text-align: center;
-        }
-
-        #dropview>p {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ccc;
-        }
-
-        .workItem {
-            background-color: white;
-            /*display: inline-flex;*/
-            border-radius: 5px;
-            height: minmax(200px, auto);
-            padding: 5px;
-        }
-
-
-        .ui-state-active {
-            background-color: #ddf;
-        }
-
-        .ui-state-hover {
-            background-color: #e1d4ff;
-        }
-
-
-        .headerContainer {
-            height: 100px;
-            text-align: center;
-            background-color: white;
-            margin-bottom: 5px;
-        }
-
-        .headerContainer>#title {
-            padding-top: 20px;
-            font-size: 2rem;
-            outline: none;
-            font-weight: bold;
-            border: none;
-            text-align: center;
-        }
-
-        #title:focus {
-            outline: none;
-        }
-
-        /**************Elements************************************/
-        /**********************************************************/
-        .oneLayer {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-auto-rows: minmax(50px, auto);
-            grid-row-gap: 2px;
-            grid-column-gap: 2px;
-            padding: 5px;
-        }
-
-        .oneLayer>div {
-            background-color: green;
-        }
-
-        .twoLayer {
-            display: grid;
-            grid-template-columns: 2fr 3fr;
-            grid-auto-rows: 50px;
-            grid-row-gap: 2px;
-            grid-column-gap: 2px;
-            padding: 5px;
-        }
-
-        .twoLayer>div {
-            background-color: green;
-        }
-
-
-        .eHeading input {
-            font-size: 2rem;
-            outline: none;
-            font-weight: bold;
-            border: none;
-        }
-
-        .eSubHeading input {
-            font-size: 1.2rem;
-            outline: none;
-            font-weight: bold;
-            border: none;
-        }
-
-        .ePara textarea {
-            font-size: 1.2rem;
-            font-family: Verdana;
-            outline: none;
-            border: none;
-            resize: none;
-            overflow: hidden;
-            min-height: 50px;
-            max-height: auto;
-            line-height: 1.5rem;
-        }
-
-        .normalLabel{
-            font-size: 1.2rem;
-            outline: none;
-            border: none;
-            text-align: right;
-            padding-right: 10px;
-        }
-        
-        .normalTextField{
-            font-size: 1.2rem;
-            padding-left: 10px;
-        }
-
-
-        /**********************************************************/
-    </style>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
@@ -208,48 +27,89 @@
             <div id="workContainer" class="droppable">
 
                 <div class="workItem eHeading">
-                    <div class="oneLayer">
+                    <div class="itemMain"></div>
+                    <div class="itemSidebar"></div>
+                </div>
+
+
+                <div class="workItem eHeading">
+                    <div class="oneLayer itemMain">
                         <input type="text" value="Enter Heading" onClick="this.select();">
+                    </div>
+
+                    <div class="itemSidebar">
+                        <button>X</button>
+                        <button>-</button>
                     </div>
                 </div>
 
                 <div class="workItem eSubHeading">
-                    <div class="oneLayer">
+                    <div class="oneLayer itemMain">
                         <input type="text" value="Enter Sub Heading" onClick="this.select();">
                     </div>
+                    <div class="itemSidebar"></div>
                 </div>
 
 
                 <div class="workItem ePara">
-                    <div class="oneLayer">
+                    <div class="oneLayer itemMain">
                         <textarea rows="3" placeholder="Enter text" oninput="auto_grow(this)">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</textarea>
                     </div>
+                    <div class="itemSidebar"></div>
                 </div>
 
 
                 <div class="workItem">
-                    <div class="twoLayer">
-                        <input type="text" class="normalLabel" value="Field Name" onClick="this.select();">
-                        <input type="text" class="normalTextField" placeholder="Enter Placeholder">
-                        
-                        <p class="normalLabel">Required</p>
-                        <input type="checkbox">
+                    <div class="twoLayer itemMain">
+                        <label>Field Name</label>
+                        <input type="text" name="fieldName" placeholder="Name..">
+                        <label>Required</label>
+                        <input type="checkbox" name="required">
                     </div>
+                    <div class="itemSidebar"></div>
                 </div>
-
-
-
-
-
-
 
                 <div class="workItem">
-                    <div class="twoLayer">
-                        <div>Shivam</div>
-                        <div>Shivam</div>
-                        <div>Shivam</div>
+                    <div class="twoLayer itemMain">
+                        <label>Field Name</label>
+                        <input type="text" name="fieldName" placeholder="Name..">
+                        <label>Required</label>
+                        <input type="checkbox" name="required">
+                        <label>Min Value</label>
+                        <input type="number" name="minValue">
+                        <label>Max Value</label>
+                        <input type="number" name="maxValue">
                     </div>
+                    <div class="itemSidebar"></div>
                 </div>
+
+                <div class="workItem">
+                    <div class="twoLayer itemMain">
+                        <label>Field Name</label>
+                        <input type="text" name="fieldName" value="Email" onClick="this.select();">
+                        <label>Required</label>
+                        <input type="checkbox" name="required">
+                    </div>
+                    <div class="itemSidebar"></div>
+                </div>
+
+                <div class="workItem">
+                    <div class="twoLayer itemMain">
+                        <label>Field Name</label>
+                        <input type="text" name="fieldName" placeholder="Gender">
+                        <label>Required</label>
+                        <input type="checkbox" name="required">
+                        <label>Options</label>
+                        <input type="text" name="option" placeholder="Option 1">
+                        <label></label>
+                        <input type="text" name="option" placeholder="Option 2">
+                    </div>
+                    <div class="itemSidebar"></div>
+                </div>
+
+
+
+
 
 
             </div>
@@ -297,81 +157,7 @@
 
 
 
+        <script src="main.js"></script>
+</body>
 
-
-
-
-
-        <script>
-            function print(msg) {
-                console.log(msg);
-            }
-
-            $(".draggable").draggable({
-                start: function(eve, ui) {
-                    print("Drag Started");
-                    //$(this).css("width", "100px");
-                    $(ui.helper).css("width", "170px") //customize helper
-                    $(ui.helper).css("box-shadow", "0px 0px 18px 4px rgba(0,0,0,0.47)");
-
-                },
-                drag: function() {
-                    print("Drag in progress");
-                },
-                stop: function() {
-                    print("Drag Stopped");
-                    //$(this).css("width", "");
-                },
-                //revert: true,
-                revert: function(dropped) {
-                    print("Dropped is this");
-                    print(dropped);
-                    var dropped = dropped && dropped.hasClass("droppable");
-                    if (!dropped) {
-                        print("Dropped Outside");
-                        //$(".draggable").draggable("option", "revertDuration", 200);
-                        return true;
-                    } else {
-                        print("Dropped inside");
-                        //$(".draggable").draggable("option", "revertDuration", 0);
-                        return true;
-                    }
-                },
-                revertDuration: 0, //how much time, it will take to revert
-                helper: "clone",
-                //connectToSortable: ".droppable"
-            });
-
-
-
-            $(".droppable").droppable({
-                accept: ".draggable",
-                activeClass: 'ui-state-active',
-                hoverClass: 'ui-state-hover',
-                drop: function(eve, ui) {
-                    print("Dropped");
-
-                    newbox = ui.draggable.clone();
-                    newbox.removeClass("draggable");
-                    newbox.removeClass("item");
-                    newbox.addClass("workItem");
-                    newbox.css("width", "");
-                    print(newbox);
-                    newbox.appendTo($(this));
-
-                }
-            });
-
-
-            $("#workContainer").sortable({
-                revert: true
-            });
-
-
-            function auto_grow(element) {
-                //element.style.height = "5px";
-                element.style.height= "auto";
-                element.style.height = (element.scrollHeight) + "px";
-            }
-        </script>
-</body></html>
+</html>
