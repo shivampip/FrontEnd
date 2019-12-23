@@ -27,12 +27,14 @@
             <div id="workContainer" class="droppable">
 
                 <div class="workItem eHeading">
+                    <label class="workItemLabel">Blank</label>
                     <div class="itemMain"></div>
                     <div class="itemSidebar"></div>
                 </div>
 
 
                 <div class="workItem eHeading">
+                    <label class="workItemLabel">Heading</label>
                     <div class="oneLayer itemMain">
                         <input type="text" value="Enter Heading" onClick="this.select();">
                     </div>
@@ -43,6 +45,7 @@
                 </div>
 
                 <div class="workItem eSubHeading">
+                    <label class="workItemLabel">SubHead</label>
                     <div class="oneLayer itemMain">
                         <input type="text" value="Enter Sub Heading" onClick="this.select();">
                     </div>
@@ -51,15 +54,16 @@
 
 
                 <div class="workItem ePara">
+                    <label class="workItemLabel">Content</label>
                     <div class="oneLayer itemMain">
-                        <textarea rows="3" placeholder="Enter text"
-                            oninput="auto_grow(this)">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</textarea>
+                        <textarea rows="3" placeholder="Enter text" oninput="auto_grow(this)">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</textarea>
                     </div>
                     <div class="itemSidebar"></div>
                 </div>
 
 
                 <div class="workItem">
+                    <label class="workItemLabel">TextField</label>
                     <div class="twoLayer itemMain">
                         <label>Field Name</label>
                         <input type="text" name="fieldName" placeholder="Name..">
@@ -70,6 +74,7 @@
                 </div>
 
                 <div class="workItem">
+                    <label class="workItemLabel">Number</label>
                     <div class="twoLayer itemMain">
                         <label>Field Name</label>
                         <input type="text" name="fieldName" placeholder="Name..">
@@ -84,6 +89,7 @@
                 </div>
 
                 <div class="workItem">
+                    <label class="workItemLabel">Email</label>
                     <div class="twoLayer itemMain">
                         <label>Field Name</label>
                         <input type="text" name="fieldName" value="Email" onClick="this.select();">
@@ -94,6 +100,7 @@
                 </div>
 
                 <div class="workItem">
+                    <label class="workItemLabel">Multiple Choice</label>
                     <div class="twoLayer itemMain">
                         <label>Field Name</label>
                         <input type="text" name="fieldName" placeholder="Gender">
