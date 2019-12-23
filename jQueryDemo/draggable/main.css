@@ -158,11 +158,11 @@ body {
 }
 
 .ui-state-active {
-  background-color: #ddf;
+  background-color: whitesmoke;
 }
 
 .ui-state-hover {
-  background-color: #e1d4ff;
+  background-color: #eddefb;
 }
 
 .headerContainer {
