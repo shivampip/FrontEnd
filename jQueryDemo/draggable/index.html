@@ -20,29 +20,55 @@
             <div id="itemContainer">
 
 
-                <div class="item draggable">
+                <div class="item draggable" value="itemHead">
                     <div>
-                        <p>Text Field</p>
+                        <p>Heading</p>
                     </div>
                 </div>
 
-                <div class="item draggable">
+                <div class="item draggable" value="itemSubHead">
                     <div>
-                        <p>Text Area</p>
+                        <p>SubHeading</p>
                     </div>
                 </div>
 
-                <div class="item draggable">
+                <div class="item draggable" value="itemPara">
                     <div>
-                        <p>Select</p>
+                        <p>Paragraph</p>
                     </div>
                 </div>
 
-                <div class="item draggable">
+                <div class="item draggable" value="itemText">
                     <div>
-                        <p>Time</p>
+                        <p>Text</p>
                     </div>
                 </div>
+
+                <div class="item draggable" value="itemNumber">
+                    <div>
+                        <p>Number</p>
+                    </div>
+                </div>
+
+                <div class="item draggable" value="itemEmail">
+                    <div>
+                        <p>Email</p>
+                    </div>
+                </div>
+
+                <div class="item draggable" value="itemPhone">
+                    <div>
+                        <p>Phone</p>
+                    </div>
+                </div>
+
+                <div class="item draggable" value="itemMultiChoice">
+                    <div>
+                        <p>MultiChoice</p>
+                    </div>
+                </div>
+
+
 
 
 
@@ -62,7 +88,21 @@
 
 
 
-                <div class="workItem eHeading">
+
+
+
+
+
+            </div>
+
+            <div id="dropview">
+                <p>Drop Item Here</p>
+            </div>
+
+            <div class="imhidden">
+
+                <!-- ------------------------- -->
+                <div class="workItem eHeading" id="itemHead">
                     <label class="workItemLabel">Heading</label>
                     <div class="oneLayer itemMain">
                         <input type="text" value="Enter Heading" onClick="this.select();">
@@ -73,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class="workItem eSubHeading">
+                <div class="workItem eSubHeading" id="itemSubHead">
                     <label class="workItemLabel">SubHead</label>
                     <div class="oneLayer itemMain">
                         <input type="text" value="Enter Sub Heading" onClick="this.select();">
@@ -82,16 +122,17 @@
                 </div>
 
 
-                <div class="workItem ePara">
+                <div class="workItem ePara" id="itemPara">
                     <label class="workItemLabel">Content</label>
                     <div class="oneLayer itemMain">
-                        <textarea rows="3" placeholder="Enter text" oninput="auto_grow(this)">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</textarea>
+                        <textarea rows="3" placeholder="Enter text"
+                            oninput="auto_grow(this)">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</textarea>
                     </div>
                     <div class="itemSidebar"></div>
                 </div>
 
 
-                <div class="workItem">
+                <div class="workItem" id="itemText">
                     <label class="workItemLabel">TextField</label>
                     <div class="twoLayer itemMain">
                         <label>Field Name</label>
@@ -102,7 +143,7 @@
                     <div class="itemSidebar"></div>
                 </div>
 
-                <div class="workItem">
+                <div class="workItem" id="itemNumber">
                     <label class="workItemLabel">Number</label>
                     <div class="twoLayer itemMain">
                         <label>Field Name</label>
@@ -117,7 +158,7 @@
                     <div class="itemSidebar"></div>
                 </div>
 
-                <div class="workItem">
+                <div class="workItem" id="itemEmail">
                     <label class="workItemLabel">Email</label>
                     <div class="twoLayer itemMain">
                         <label>Field Name</label>
@@ -128,7 +169,18 @@
                     <div class="itemSidebar"></div>
                 </div>
 
-                <div class="workItem">
+                <div class="workItem" id="itemPhone">
+                    <label class="workItemLabel">Phone</label>
+                    <div class="twoLayer itemMain">
+                        <label>Field Name</label>
+                        <input type="text" name="fieldName" value="Phone Number" onClick="this.select();">
+                        <label>Required</label>
+                        <input type="checkbox" name="required">
+                    </div>
+                    <div class="itemSidebar"></div>
+                </div>
+
+                <div class="workItem" id="itemMultiChoice">
                     <label class="workItemLabel">Multiple Choice</label>
                     <div class="twoLayer itemMain">
                         <label>Field Name</label>
@@ -144,16 +196,8 @@
                 </div>
 
 
-
-
-
-
+                <!-- ------------------------- -->
             </div>
-
-            <div id="dropview">
-                <p>Drop Item Here</p>
-            </div>
-
         </div>
 
 
