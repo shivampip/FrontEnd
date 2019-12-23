@@ -3,8 +3,6 @@ function print(msg) {
 }
 
 $(".draggable").draggable({
-    handle: "div.itemSidebar",
-    cancle: "div.itemMain",
     start: function(eve, ui) {
         print("Drag Started");
         //$(this).css("width", "100px");
@@ -44,7 +42,6 @@ $(".droppable").droppable({
     hoverClass: "ui-state-hover",
     drop: function(eve, ui) {
         print("Dropped");
-
         newbox = ui.draggable.clone();
         newbox.removeClass("draggable");
         newbox.removeClass("item");
@@ -56,7 +53,9 @@ $(".droppable").droppable({
 });
 
 $("#workContainer").sortable({
-    revert: true
+    revert: true,
+    handle: "div.itemSidebar",
+    cancle: "div.itemMain"
 });
 
 function auto_grow(element) {

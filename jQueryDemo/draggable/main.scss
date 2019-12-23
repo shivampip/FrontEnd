@@ -2,8 +2,23 @@ $backCol: rgb(240, 240, 240);
 $textCol: #000;
 $primaryCol: blueviolet;
 $mainFont: Verdana;
+//-----------------------------
 $workItemRadius: 10px;
 $workSidebarCol: #eee;
+@function workItemShadow() {
+    @return 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+//-----------------------------
+$panelGap: 10px;
+$panelGapCol: rgb(240, 240, 240);
+//-----------------------------
+@function itemShadow() {
+    @return 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
 // .................................
 body {
     font-family: $mainFont;
@@ -20,13 +35,18 @@ body {
     height: 700px;
     display: grid;
     grid-template-columns: auto 400px;
-    background-color: rgb(233, 233, 233);
-}
-
-#itemPanel {
-    margin: 20px;
-    background-color: white;
-    padding: 5px;
+    background-color: $panelGapCol;
+    #itemPanel {
+        margin: $panelGap;
+        background-color: white;
+        padding: 10px;
+    }
+    #workPanel {
+        margin: $panelGap;
+        margin-right: 0;
+        background-color: white;
+        padding: 10px;
+    }
 }
 
 #itemContainer {
@@ -41,17 +61,11 @@ body {
     background-color: $primaryCol;
     display: inline-flex;
     border-radius: 5px;
+    box-shadow: itemShadow();
     >div {
         color: white;
         margin: auto;
     }
-}
-
-#workPanel {
-    margin: 20px;
-    margin-right: 0;
-    background-color: white;
-    padding: 10px;
 }
 
 #workContainer {
@@ -82,7 +96,7 @@ body {
     border-radius: $workItemRadius;
     height: minmax(200px, auto);
     grid-template-columns: 30px auto 100px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: workItemShadow();
     // transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     &:hover,
     &:focus-within {
@@ -131,6 +145,13 @@ body {
     }
 }
 
+.draggable {
+    &:hover {
+        cursor: move;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    }
+}
+
 .ui-state-active {
     background-color: #ddf;
 }
@@ -145,12 +166,14 @@ body {
     background-color: white;
     margin-bottom: 5px;
     #title {
+        width: 100%;
         padding-top: 20px;
+        padding-left: 30px;
         font-size: 2rem;
         outline: none;
         font-weight: bold;
         border: none;
-        text-align: center;
+        text-align: left;
         &:focus {
             outline: none;
         }
@@ -187,8 +210,18 @@ body {
         /*verticle*/
         padding-left: 30px;
     }
-    input {
+    input,
+    checkbox {
         padding: 5px;
+        box-shadow: none;
+        border-radius: 5px;
+        border: 1px solid rgb(192, 190, 190);
+        &:hover,
+        &:focus {
+            border: 1px solid $primaryCol;
+            outline: none;
+            box-shadow: 0 0 5px 0 $primaryCol;
+        }
     }
 }
 
@@ -200,11 +233,11 @@ body {
 }
 
 .eHeading input {
-    @include editableHead(2rem);
+    @include editableHead(1.5rem);
 }
 
 .eSubHeading input {
-    @include editableHead(1.2rem);
+    @include editableHead(1.1rem);
 }
 
 .ePara textarea {
@@ -216,7 +249,7 @@ body {
     overflow: hidden;
     min-height: 50px;
     max-height: auto;
-    line-height: 1.5rem;
+    line-height: 1.3rem;
 }
 
 .normalLabel {
