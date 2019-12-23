@@ -116,7 +116,7 @@ body {
 }
 
 .workItemLabel {
-    background-color: $primaryCol;
+    background-color: lighten($color: $primaryCol, $amount: 0%);
     writing-mode: vertical-rl;
     transform: rotate(-180deg);
     padding: 5px;
