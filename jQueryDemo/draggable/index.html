@@ -17,6 +17,7 @@
     <div id="mainWrapper">
 
         <div id="itemPanel">
+            <button id="previewB">Preview</button>
             <div id="itemContainer">
 
 
@@ -77,9 +78,11 @@
 
         <div id="workPanel">
 
-            <div class="headerContainer">
-                <input id="title" type="text" value="Enter Title" onClick="this.select();">
-            </div>
+            <form id="workFrom">
+                <div class="headerContainer">
+                    <input id="title" type="text" value="Enter Title" onClick="this.select();">
+                </div>
+            </form>
 
 
 
@@ -125,8 +128,7 @@
                 <div class="workItem ePara" id="itemPara">
                     <label class="workItemLabel">Content</label>
                     <div class="oneLayer itemMain">
-                        <textarea rows="3" placeholder="Enter text"
-                            oninput="auto_grow(this)">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</textarea>
+                        <textarea rows="3" placeholder="Enter text" oninput="auto_grow(this)">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</textarea>
                     </div>
                     <div class="itemSidebar"></div>
                 </div>
