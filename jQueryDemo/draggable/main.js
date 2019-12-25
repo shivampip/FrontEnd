@@ -96,15 +96,12 @@ function showWarning(msg) {
 
 function parseEmail(item, oitem) {
     print("Email===================");
-    print(item);
-    print(oitem);
 
     let label = oitem.querySelector("input[name=fieldName]").value;
     print(label);
 
     let isRequired = oitem.querySelector("input[name=required]").checked;
     print(isRequired);
-
 
 }
 
@@ -113,6 +110,7 @@ function parseEmail(item, oitem) {
 
 previewB = document.getElementById("previewB");
 previewB.addEventListener("click", (eve) => {
+    console.clear();
     print("==========================================");
     let form = document.getElementById("workFrom");
 
