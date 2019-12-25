@@ -105,10 +105,12 @@ previewB.addEventListener("click", (eve) => {
     let relations = [];
     let values = [];
     let workContainer = document.getElementById("workContainer");
-    workContainer.querySelectorAll(".workItem").forEach(function(item) {
-        print("WorkItem is here");
+    workContainer.querySelectorAll(".workItem").forEach(function(oitem) {
+        let item = $(oitem);
         print(item);
-        print("Item value: " + item.value);
+        let value = item.attr("value");
+        print("Value: " + value);
+        print("-------------------------------");
 
 
         // let name = approDiv.querySelector("p").innerHTML;
