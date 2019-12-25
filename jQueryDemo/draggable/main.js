@@ -4,29 +4,29 @@ function print(msg) {
 
 $(".draggable").draggable({
     start: function(eve, ui) {
-        print("Drag Started");
+        // print("Drag Started");
         //$(this).css("width", "100px");
         $(ui.helper).css("width", "170px"); //customize helper
         $(ui.helper).css("box-shadow", "0px 0px 18px 4px rgba(0,0,0,0.47)");
     },
     drag: function() {
-        print("Drag in progress");
+        // print("Drag in progress");
     },
     stop: function() {
-        print("Drag Stopped");
+        // print("Drag Stopped");
         //$(this).css("width", "");
     },
     //revert: true,
     revert: function(dropped) {
-        print("Dropped is this");
-        print(dropped);
+        // print("Dropped is this");
+        // print(dropped);
         var dropped = dropped && dropped.hasClass("droppable");
         if (!dropped) {
-            print("Dropped Outside");
+            // print("Dropped Outside");
             //$(".draggable").draggable("option", "revertDuration", 200);
             return true;
         } else {
-            print("Dropped inside");
+            // print("Dropped inside");
             //$(".draggable").draggable("option", "revertDuration", 0);
             return true;
         }
@@ -41,15 +41,15 @@ $(".droppable").droppable({
     activeClass: "ui-state-active",
     hoverClass: "ui-state-hover",
     drop: function(eve, ui) {
-        print("Dropped");
+        // print("Dropped");
         let value = ui.draggable.attr("value");
         value = "#" + value;
-        print("Value is " + value);
+        // print("Value is " + value);
 
         let item = $(value).clone(true);
         item.removeAttr("id");
         item.attr("value", value);
-        print("Now value is " + item.attr("value"));
+        // print("Now value is " + item.attr("value"));
         item.css("display", "grid");
         item.appendTo($(this));
         // $("#multipleChoice")
@@ -94,8 +94,26 @@ function showWarning(msg) {
 
 /////////////////////////////////////////////////////////////////
 
+function parseEmail(item, oitem) {
+    print("Email===================");
+    print(item);
+    print(oitem);
+
+    let label = oitem.querySelector("input[name=fieldName]").value;
+    print(label);
+
+    let isRequired = oitem.querySelector("input[name=required]").checked;
+    print(isRequired);
+
+
+}
+
+
+/////////////////////////////////////////////////////////////////
+
 previewB = document.getElementById("previewB");
 previewB.addEventListener("click", (eve) => {
+    print("==========================================");
     let form = document.getElementById("workFrom");
 
     let workItems = $("workContainer.workItem");
@@ -107,9 +125,14 @@ previewB.addEventListener("click", (eve) => {
     let workContainer = document.getElementById("workContainer");
     workContainer.querySelectorAll(".workItem").forEach(function(oitem) {
         let item = $(oitem);
-        print(item);
+        // print(oitem);
+        // print(item);
         let value = item.attr("value");
         print("Value: " + value);
+        if (value == "#itemEmail") {
+            parseEmail(item, oitem);
+        }
+
         print("-------------------------------");
 
 
@@ -128,7 +151,7 @@ previewB.addEventListener("click", (eve) => {
 
 
 
-    //return;
+    return;
     print("Setting ajax upp");
     //#################SETUP##############################
     var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
