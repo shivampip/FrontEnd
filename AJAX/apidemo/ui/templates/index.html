@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        h3 {
+            color: purple;
+        }
+    </style>
+    <title>Admin Panel</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h3>Welcome to AJAX</h3>
+
+    <p>csfr token: {% csrf_token %}</p>
+
+
+    <script>
+        function print(msg) {
+            console.log(msg);
+        }
+        $(document).ready(function() {
+            //alert("Welcome");
+            print("ready");
+            print("Setting ajax upp");
+            //#################SETUP##############################
+            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+            //print("CSRF: " + csrftoken);
+
+            function csrfSafeMethod(method) {
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+            //####################################################
+
+
+            let data = {
+                fname: "Shivam",
+                lname: "Agrawal",
+                computer: {
+                    "brand": "HP",
+                    "RAM": "8gb",
+                    "HardDisk": "1TB"
+                }
+            };
+
+            print("----------------------")
+            print(data);
+            print("---------------------")
+
+            $.ajax({
+                method: "POST",
+                url: "/api/echo",
+                contentType: 'application/json; charset=utf-8',
+                dataType: "json",
+                data: JSON.stringify(data),
+                success: function(data) {
+                    print("response success");
+                    print(data);
+                },
+                failure: function(errMsg) {
+                    print("response error");
+                    print(errMsg);
+                },
+                complete: function(data) {
+                    print("Request completed");
+                }
+            });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
