@@ -28,9 +28,9 @@
             //alert("Welcome");
             print("ready");
             print("Setting ajax upp");
-            //#################SETUP##############################
+
+            //======Setup========
             var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-            //print("CSRF: " + csrftoken);
 
             function csrfSafeMethod(method) {
                 return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -42,7 +42,7 @@
                     }
                 }
             });
-            //####################################################
+            //===================
 
 
             let data = {
@@ -52,13 +52,14 @@
                     "brand": "HP",
                     "RAM": "8gb",
                     "HardDisk": "1TB"
-                }
+                },
+                city: ["Pipariya", "Indore", "Mumbai"]
             };
 
-            print("----------------------")
+            print("Request data:-")
             print(data);
-            print("---------------------")
 
+            print("Sending POST request");
             $.ajax({
                 method: "POST",
                 url: "/api/echo",
@@ -67,6 +68,7 @@
                 data: JSON.stringify(data),
                 success: function(data) {
                     print("response success");
+                    print("Response data:-");
                     print(data);
                 },
                 failure: function(errMsg) {
