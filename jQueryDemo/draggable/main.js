@@ -94,8 +94,27 @@ function showWarning(msg) {
 
 /////////////////////////////////////////////////////////////////
 
-function parseEmail(item, oitem) {
+function parseHeading(oitem) {
+    print("Heading================");
+
+    let label = oitem.querySelector("input[name=fieldName]").value;
+    print(label);
+
+}
+
+function parseEmail(oitem) {
     print("Email===================");
+
+    let label = oitem.querySelector("input[name=fieldName]").value;
+    print(label);
+
+    let isRequired = oitem.querySelector("input[name=required]").checked;
+    print(isRequired);
+
+}
+
+function parsePhone(oitem) {
+    print("Phone===================");
 
     let label = oitem.querySelector("input[name=fieldName]").value;
     print(label);
@@ -127,8 +146,15 @@ previewB.addEventListener("click", (eve) => {
         // print(item);
         let value = item.attr("value");
         print("Value: " + value);
+        if (value == "#itemHead") {
+            parseHeading(oitem);
+        }
         if (value == "#itemEmail") {
-            parseEmail(item, oitem);
+            parseEmail(oitem);
+        }
+
+        if (value == "#itemPhone") {
+            parsePhone(oitem);
         }
 
         print("-------------------------------");
