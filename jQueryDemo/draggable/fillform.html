@@ -8,7 +8,7 @@
     <title>Drag N Drop Demo</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="fillform.css">
 </head>
 
 <body>
@@ -16,79 +16,115 @@
 
     <div id="mainWrapper">
 
-        <div id="itemPanel">
-            <button id="previewB">Preview</button>
-            <div id="itemContainer">
-
-
-                <div class="item draggable" value="itemHead">
-                    <div>
-                        <p>Heading</p>
-                    </div>
-                </div>
-
-                <div class="item draggable" value="itemSubHead">
-                    <div>
-                        <p>SubHeading</p>
-                    </div>
-                </div>
-
-                <div class="item draggable" value="itemPara">
-                    <div>
-                        <p>Paragraph</p>
-                    </div>
-                </div>
-
-                <div class="item draggable" value="itemText">
-                    <div>
-                        <p>Text</p>
-                    </div>
-                </div>
-
-                <div class="item draggable" value="itemNumber">
-                    <div>
-                        <p>Number</p>
-                    </div>
-                </div>
-
-                <div class="item draggable" value="itemEmail">
-                    <div>
-                        <p>Email</p>
-                    </div>
-                </div>
-
-                <div class="item draggable" value="itemPhone">
-                    <div>
-                        <p>Phone</p>
-                    </div>
-                </div>
-
-                <div class="item draggable" value="itemMultiChoice">
-                    <div>
-                        <p>MultiChoice</p>
-                    </div>
-                </div>
-
-
-
-
-
-            </div>
-        </div>
 
         <div id="workPanel">
 
-            <form id="workFrom">
-                <div class="headerContainer">
-                    <input id="title" type="text" value="Enter Title" onClick="this.select();">
+            <div class="headerContainer">
+                <input id="title" type="text" value="Title">
+            </div>
+            <div class="headerContainer">
+                <p id="title">Title</p>
+            </div>
+
+
+
+            <div id="workContainer">
+
+                <!-- ------------------------- -->
+                <div class="workItem eHeading" id="itemHead">
+                    <label class="workItemLabel">Heading</label>
+                    <div class="oneLayer itemMain">
+                        <input type="text" name="fieldName" value="Enter Heading" onClick="this.select();">
+                    </div>
+
+                    <div class="itemSidebar">
+                        <div class="closeB"></div>
+                    </div>
                 </div>
-            </form>
+
+                <div class="workItem eSubHeading" id="itemSubHead">
+                    <label class="workItemLabel">SubHead</label>
+                    <div class="oneLayer itemMain">
+                        <input type="text" name="fieldName" value="Enter Sub Heading" onClick="this.select();">
+                    </div>
+                    <div class="itemSidebar"></div>
+                </div>
 
 
+                <div class="workItem ePara" id="itemPara">
+                    <label class="workItemLabel">Content</label>
+                    <div class="oneLayer itemMain">
+                        <textarea rows="3" placeholder="Enter text" oninput="auto_grow(this)">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</textarea>
+                    </div>
+                    <div class="itemSidebar"></div>
+                </div>
 
-            <div id="workContainer" class="droppable">
+
+                <div class="workItem" id="itemText">
+                    <label class="workItemLabel">TextField</label>
+                    <div class="twoLayer itemMain">
+                        <label>Field Name</label>
+                        <input type="text" name="fieldName" placeholder="Name..">
+                        <label>Required</label>
+                        <input type="checkbox" name="required">
+                    </div>
+                    <div class="itemSidebar"></div>
+                </div>
+
+                <div class="workItem" id="itemNumber">
+                    <label class="workItemLabel">Number</label>
+                    <div class="twoLayer itemMain">
+                        <label>Field Name</label>
+                        <input type="text" name="fieldName" placeholder="Name..">
+                        <label>Required</label>
+                        <input type="checkbox" name="required">
+                        <label>Min Value</label>
+                        <input type="number" name="minValue">
+                        <label>Max Value</label>
+                        <input type="number" name="maxValue">
+                    </div>
+                    <div class="itemSidebar"></div>
+                </div>
+
+                <div class="workItem" id="itemEmail">
+                    <label class="workItemLabel">Email</label>
+                    <div class="twoLayer itemMain">
+                        <label>Field Name</label>
+                        <input type="text" name="fieldName" value="Email" onClick="this.select();">
+                        <label>Required</label>
+                        <input type="checkbox" name="required">
+                    </div>
+                    <div class="itemSidebar"></div>
+                </div>
+
+                <div class="workItem" id="itemPhone">
+                    <label class="workItemLabel">Phone</label>
+                    <div class="twoLayer itemMain">
+                        <label>Field Name</label>
+                        <input type="text" name="fieldName" value="Phone Number" onClick="this.select();">
+                        <label>Required</label>
+                        <input type="checkbox" name="required">
+                    </div>
+                    <div class="itemSidebar"></div>
+                </div>
+
+                <div class="workItem" id="itemMultiChoice">
+                    <label class="workItemLabel">Multiple Choice (NA)</label>
+                    <div class="twoLayer itemMain">
+                        <label>Field Name</label>
+                        <input type="text" name="fieldName" placeholder="Gender">
+                        <label>Required</label>
+                        <input type="checkbox" name="required">
+                        <label>Options</label>
+                        <input type="text" name="option" placeholder="Option 1">
+                        <label></label>
+                        <input type="text" name="option" placeholder="Option 2">
+                    </div>
+                    <div class="itemSidebar"></div>
+                </div>
 
 
+                <!-- ------------------------- -->
 
 
 
@@ -207,7 +243,7 @@
 
 
 
-        <script src="main.js"></script>
+        <script src="fillform.js"></script>
 </body>
 
 </html>

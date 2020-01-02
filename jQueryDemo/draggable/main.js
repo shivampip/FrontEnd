@@ -95,33 +95,71 @@ function showWarning(msg) {
 /////////////////////////////////////////////////////////////////
 
 function parseHeading(oitem) {
-    print("Heading================");
-
     let label = oitem.querySelector("input[name=fieldName]").value;
-    print(label);
+    return {
+        "itype": "head",
+        "label": label
+    }
+}
 
+function parseSubHeading(oitem) {
+    let label = oitem.querySelector("input[name=fieldName]").value;
+    return {
+        "itype": "subhead",
+        "label": label
+    }
+}
+
+function parsePara(oitem) {
+    let label = oitem.querySelector("textarea").value;
+    return {
+        "itype": "para",
+        "label": label
+    }
+}
+
+function parseText(oitem) {
+    let label = oitem.querySelector("input[name=fieldName]").value;
+    let isRequired = oitem.querySelector("input[name=required]").checked;
+    return {
+        "itype": "text",
+        "label": label,
+        "required": isRequired
+    }
+}
+
+function parseNumber(oitem) {
+    let label = oitem.querySelector("input[name=fieldName]").value;
+    let isRequired = oitem.querySelector("input[name=required]").checked;
+    let minValue = oitem.querySelector("input[name=minValue]").value;
+    let maxValue = oitem.querySelector("input[name=maxValue]").value;
+    return {
+        "itype": "number",
+        "label": label,
+        "required": isRequired,
+        "minValue": minValue,
+        "maxValue": maxValue
+    }
 }
 
 function parseEmail(oitem) {
-    print("Email===================");
-
     let label = oitem.querySelector("input[name=fieldName]").value;
-    print(label);
-
     let isRequired = oitem.querySelector("input[name=required]").checked;
-    print(isRequired);
-
+    return {
+        "itype": "email",
+        "label": label,
+        "required": isRequired
+    }
 }
 
 function parsePhone(oitem) {
-    print("Phone===================");
-
     let label = oitem.querySelector("input[name=fieldName]").value;
-    print(label);
-
     let isRequired = oitem.querySelector("input[name=required]").checked;
-    print(isRequired);
-
+    return {
+        "itype": "phone",
+        "label": label,
+        "required": isRequired
+    }
 }
 
 
@@ -136,28 +174,30 @@ previewB.addEventListener("click", (eve) => {
     let workItems = $("workContainer.workItem");
 
 
-    let params = [];
-    let relations = [];
-    let values = [];
+    let out = [];
     let workContainer = document.getElementById("workContainer");
     workContainer.querySelectorAll(".workItem").forEach(function(oitem) {
         let item = $(oitem);
-        // print(oitem);
-        // print(item);
         let value = item.attr("value");
-        print("Value: " + value);
+        let data = undefined;
         if (value == "#itemHead") {
-            parseHeading(oitem);
-        }
-        if (value == "#itemEmail") {
-            parseEmail(oitem);
+            data = parseHeading(oitem);
+        } else if (value == "#itemSubHead") {
+            data = parseSubHeading(oitem);
+        } else if (value == "#para") {
+            data = parsePara(oitem);
+        } else if (value == "#itemText") {
+            data = parseText(oitem);
+        } else if (value == "#itemNumber") {
+            data = parseNumber(oitem);
+        } else if (value == "#itemEmail") {
+            data = parseEmail(oitem);
+        } else if (value == "#itemPhone") {
+            data = parsePhone(oitem);
         }
 
-        if (value == "#itemPhone") {
-            parsePhone(oitem);
-        }
-
-        print("-------------------------------");
+        print(data);
+        out.push(data);
 
 
         // let name = approDiv.querySelector("p").innerHTML;
@@ -173,6 +213,8 @@ previewB.addEventListener("click", (eve) => {
         //print("Appro Next: " + name + ", " + price);
     });
 
+    print("OUT:- ");
+    print(out);
 
 
     return;
