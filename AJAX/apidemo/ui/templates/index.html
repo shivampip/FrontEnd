@@ -44,6 +44,11 @@
             });
             //===================
 
+            let item = {
+                "itype": "email",
+                "field_name": "Enter Your Email",
+                "required": true
+            }
 
             let data = {
                 fname: "Shivam",
@@ -53,7 +58,8 @@
                     "RAM": "8gb",
                     "HardDisk": "1TB"
                 },
-                city: ["Pipariya", "Indore", "Mumbai"]
+                city: ["Pipariya", "Indore", "Mumbai"],
+                items: [item, item, item]
             };
 
             print("Request data:-")
