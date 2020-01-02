@@ -31,6 +31,7 @@
 
             //======Setup========
             var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+            print("CSRF Token: " + csrftoken);
 
             function csrfSafeMethod(method) {
                 return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));

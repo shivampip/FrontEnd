@@ -12,7 +12,7 @@ def index(request):
 
 def echo(request):
     if(request.method=="GET"):
-        return HttpResponse("<h2>Echoing..</h2>")
+        return HttpResponse("<p>Please use <b>POST</b> request</p>")
     elif(request.method=="POST"):
         print(request.body)
         if request.is_ajax():
@@ -24,7 +24,7 @@ def echo(request):
                     "data": data
                 })
             except Exception as e:
-                print("error while parsing json")
+                print("Error while parsing json")
                 return JsonResponse({
                     "status": "error",
                     "error": str(e)
