@@ -7,21 +7,46 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PageUI</title>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
 
     <div id="mainWrapper">
 
-        <div id="pageWrapper">
-            <div id="page" class="stretchedToMargin"></div>
+        <div id="leftWrapper">
+            <div id="logoWrapper">
+
+            </div>
+            <div id="settingBar">
+                <div id="settingIcon">
+
+                </div>
+            </div>
+
         </div>
 
+        <div id="pageWrapper">
+            <div id="page"></div>
+        </div>
+
+        <div id="rightWrapper">
+
+        </div>
 
     </div>
 
 
 
+    <script>
+        $(document).ready(function () {
+            $("#settingIcon").click(function () {
+                $("#settingBar").slideToggle(function (eve) {
+                    alert("opened");
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
