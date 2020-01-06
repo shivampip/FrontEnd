@@ -14,6 +14,14 @@ $(document).ready(function() {
 
     /////////////////////////////////////////////////////
 
+    let sel_item = { itype: "select", label: "Color", db_name = "color", 'options': [] }
+    sel_item.options.push("Black");
+    sel_item.options.push("Green");
+    sel_item.options.push("White");
+    sel_item.options.push("Red");
+    sel_item.options.push("Purple");
+
+
     let data = [
         { itype: "head", label: "Personal Information" },
         { itype: "subhead", label: "We respect privacy" },
@@ -91,6 +99,19 @@ $(document).ready(function() {
     </div>`;
     }
 
+    function getSelect(item) {
+        let options = "";
+        print(item['options']);
+        item['options'].forEach(function(option) {
+            options += "<option>" + option + "</option>";
+        });
+        return `<div class="twoLayer itemMain">
+        <label>${item['label']}</label>
+        <select name="${item['db_name']}"> ${options} </select>
+    </div>`;
+    }
+
+
     function getSubmit(item) {
         return `<div class="twoLayer itemMain">
         <label></label>
@@ -119,6 +140,8 @@ $(document).ready(function() {
             out = getPhone(item);
         } else if (itype == "submit") {
             out = getSubmit(item);
+        } else if (itype == "select") {
+            out = getSelect(item);
         }
         workContainer.insertAdjacentHTML("beforeend", out);
     });
