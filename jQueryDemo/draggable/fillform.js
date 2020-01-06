@@ -4,6 +4,8 @@ $(document).ready(function() {
         console.log(msg);
     }
 
+    $("#title").text("Two Wheeler Licence");
+
 
 
     var workContainer = document.getElementById("workContainer"); // assuming ul exists

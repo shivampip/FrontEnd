@@ -18,7 +18,7 @@ body {
   margin: 10px;
   margin-right: 0;
   background-color: white;
-  padding: 10px;
+  padding: 0;
   overflow: hidden;
   min-height: 50px;
 }
@@ -57,6 +57,7 @@ body {
   row-gap: 5px;
   -webkit-column-gap: 5px;
           column-gap: 5px;
+  padding: 10px;
   padding-bottom: 130px;
 }
 
@@ -78,18 +79,22 @@ body {
 
 #title {
   width: 100%;
-  padding-top: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   padding-left: 15px;
   font-size: 2rem;
   outline: none;
   font-weight: bold;
   border: none;
-  text-align: left;
+  text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  background-color: blueviolet;
+  color: white;
+  margin: 0;
   /* Standard */
 }
 
@@ -149,6 +154,9 @@ body {
 .twoLayer input[type=submit] {
   background-color: blueviolet;
   color: white;
+  width: 200px;
+  margin-top: 10px;
+  height: 30px;
 }
 
 .heading {
