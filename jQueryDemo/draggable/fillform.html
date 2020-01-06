@@ -19,110 +19,67 @@
 
         <div id="workPanel">
 
-            <div class="headerContainer">
-                <input id="title" type="text" value="Title">
-            </div>
-            <div class="headerContainer">
-                <p id="title">Title</p>
-            </div>
+            <p id="title">Title</p>
 
 
 
             <div id="workContainer">
 
-                <!-- ------------------------- -->
-                <div class="workItem eHeading" id="itemHead">
-                    <label class="workItemLabel">Heading</label>
-                    <div class="oneLayer itemMain">
-                        <input type="text" name="fieldName" value="Enter Heading" onClick="this.select();">
-                    </div>
-
-                    <div class="itemSidebar">
-                        <div class="closeB"></div>
-                    </div>
-                </div>
-
-                <div class="workItem eSubHeading" id="itemSubHead">
-                    <label class="workItemLabel">SubHead</label>
-                    <div class="oneLayer itemMain">
-                        <input type="text" name="fieldName" value="Enter Sub Heading" onClick="this.select();">
-                    </div>
-                    <div class="itemSidebar"></div>
+                <div class="oneLayer itemMain">
+                    <p class="heading">Personal Information</p>
                 </div>
 
 
-                <div class="workItem ePara" id="itemPara">
-                    <label class="workItemLabel">Content</label>
-                    <div class="oneLayer itemMain">
-                        <textarea rows="3" placeholder="Enter text" oninput="auto_grow(this)">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</textarea>
-                    </div>
-                    <div class="itemSidebar"></div>
+                <div class="oneLayer itemMain">
+                    <p class="subHeading">Fill your personal info here</p>
                 </div>
 
 
-                <div class="workItem" id="itemText">
-                    <label class="workItemLabel">TextField</label>
-                    <div class="twoLayer itemMain">
-                        <label>Field Name</label>
-                        <input type="text" name="fieldName" placeholder="Name..">
-                        <label>Required</label>
-                        <input type="checkbox" name="required">
-                    </div>
-                    <div class="itemSidebar"></div>
+                <div class="oneLayer itemMain">
+                    <p class="para">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</p>
                 </div>
 
-                <div class="workItem" id="itemNumber">
-                    <label class="workItemLabel">Number</label>
-                    <div class="twoLayer itemMain">
-                        <label>Field Name</label>
-                        <input type="text" name="fieldName" placeholder="Name..">
-                        <label>Required</label>
-                        <input type="checkbox" name="required">
-                        <label>Min Value</label>
-                        <input type="number" name="minValue">
-                        <label>Max Value</label>
-                        <input type="number" name="maxValue">
-                    </div>
-                    <div class="itemSidebar"></div>
+
+                <div class="twoLayer itemMain">
+                    <label>Field Name</label>
+                    <input type="text" name="fieldName" placeholder="Name..">
                 </div>
 
-                <div class="workItem" id="itemEmail">
-                    <label class="workItemLabel">Email</label>
-                    <div class="twoLayer itemMain">
-                        <label>Field Name</label>
-                        <input type="text" name="fieldName" value="Email" onClick="this.select();">
-                        <label>Required</label>
-                        <input type="checkbox" name="required">
-                    </div>
-                    <div class="itemSidebar"></div>
+                <div class="twoLayer itemMain">
+                    <label>Field Name</label>
+                    <input type="text" name="fieldName" placeholder="Name..">
+                    <label>Required</label>
+                    <input type="checkbox" name="required">
+                    <label>Min Value</label>
+                    <input type="number" name="minValue">
+                    <label>Max Value</label>
+                    <input type="number" name="maxValue">
                 </div>
 
-                <div class="workItem" id="itemPhone">
-                    <label class="workItemLabel">Phone</label>
-                    <div class="twoLayer itemMain">
-                        <label>Field Name</label>
-                        <input type="text" name="fieldName" value="Phone Number" onClick="this.select();">
-                        <label>Required</label>
-                        <input type="checkbox" name="required">
-                    </div>
-                    <div class="itemSidebar"></div>
+                <div class="twoLayer itemMain">
+                    <label>Field Name</label>
+                    <input type="text" name="fieldName" value="Email" onClick="this.select();">
+                    <label>Required</label>
+                    <input type="checkbox" name="required">
                 </div>
 
-                <div class="workItem" id="itemMultiChoice">
-                    <label class="workItemLabel">Multiple Choice (NA)</label>
-                    <div class="twoLayer itemMain">
-                        <label>Field Name</label>
-                        <input type="text" name="fieldName" placeholder="Gender">
-                        <label>Required</label>
-                        <input type="checkbox" name="required">
-                        <label>Options</label>
-                        <input type="text" name="option" placeholder="Option 1">
-                        <label></label>
-                        <input type="text" name="option" placeholder="Option 2">
-                    </div>
-                    <div class="itemSidebar"></div>
+                <div class="twoLayer itemMain">
+                    <label>Field Name</label>
+                    <input type="text" name="fieldName" value="Phone Number" onClick="this.select();">
+                    <label>Required</label>
+                    <input type="checkbox" name="required">
                 </div>
 
+                <div class="twoLayer itemMain">
+                    <label>Field Name</label>
+                    <input type="text" name="fieldName" placeholder="Gender">
+                    <label>Required</label>
+                    <input type="checkbox" name="required">
+                    <label>Options</label>
+                    <input type="text" name="option" placeholder="Option 1">
+                    <label></label>
+                    <input type="text" name="option" placeholder="Option 2">
+                </div>
 
                 <!-- ------------------------- -->
 
@@ -134,108 +91,8 @@
 
             </div>
 
-            <div id="dropview">
-                <p>Drop Item Here</p>
-            </div>
-
-            <div class="imhidden">
-
-                <!-- ------------------------- -->
-                <div class="workItem eHeading" id="itemHead">
-                    <label class="workItemLabel">Heading</label>
-                    <div class="oneLayer itemMain">
-                        <input type="text" name="fieldName" value="Enter Heading" onClick="this.select();">
-                    </div>
-
-                    <div class="itemSidebar">
-                        <div class="closeB"></div>
-                    </div>
-                </div>
-
-                <div class="workItem eSubHeading" id="itemSubHead">
-                    <label class="workItemLabel">SubHead</label>
-                    <div class="oneLayer itemMain">
-                        <input type="text" name="fieldName" value="Enter Sub Heading" onClick="this.select();">
-                    </div>
-                    <div class="itemSidebar"></div>
-                </div>
 
 
-                <div class="workItem ePara" id="itemPara">
-                    <label class="workItemLabel">Content</label>
-                    <div class="oneLayer itemMain">
-                        <textarea rows="3" placeholder="Enter text" oninput="auto_grow(this)">This is a paragraph &#13;Here you can type lots of words. and it's auto expandable</textarea>
-                    </div>
-                    <div class="itemSidebar"></div>
-                </div>
-
-
-                <div class="workItem" id="itemText">
-                    <label class="workItemLabel">TextField</label>
-                    <div class="twoLayer itemMain">
-                        <label>Field Name</label>
-                        <input type="text" name="fieldName" placeholder="Name..">
-                        <label>Required</label>
-                        <input type="checkbox" name="required">
-                    </div>
-                    <div class="itemSidebar"></div>
-                </div>
-
-                <div class="workItem" id="itemNumber">
-                    <label class="workItemLabel">Number</label>
-                    <div class="twoLayer itemMain">
-                        <label>Field Name</label>
-                        <input type="text" name="fieldName" placeholder="Name..">
-                        <label>Required</label>
-                        <input type="checkbox" name="required">
-                        <label>Min Value</label>
-                        <input type="number" name="minValue">
-                        <label>Max Value</label>
-                        <input type="number" name="maxValue">
-                    </div>
-                    <div class="itemSidebar"></div>
-                </div>
-
-                <div class="workItem" id="itemEmail">
-                    <label class="workItemLabel">Email</label>
-                    <div class="twoLayer itemMain">
-                        <label>Field Name</label>
-                        <input type="text" name="fieldName" value="Email" onClick="this.select();">
-                        <label>Required</label>
-                        <input type="checkbox" name="required">
-                    </div>
-                    <div class="itemSidebar"></div>
-                </div>
-
-                <div class="workItem" id="itemPhone">
-                    <label class="workItemLabel">Phone</label>
-                    <div class="twoLayer itemMain">
-                        <label>Field Name</label>
-                        <input type="text" name="fieldName" value="Phone Number" onClick="this.select();">
-                        <label>Required</label>
-                        <input type="checkbox" name="required">
-                    </div>
-                    <div class="itemSidebar"></div>
-                </div>
-
-                <div class="workItem" id="itemMultiChoice">
-                    <label class="workItemLabel">Multiple Choice (NA)</label>
-                    <div class="twoLayer itemMain">
-                        <label>Field Name</label>
-                        <input type="text" name="fieldName" placeholder="Gender">
-                        <label>Required</label>
-                        <input type="checkbox" name="required">
-                        <label>Options</label>
-                        <input type="text" name="option" placeholder="Option 1">
-                        <label></label>
-                        <input type="text" name="option" placeholder="Option 2">
-                    </div>
-                    <div class="itemSidebar"></div>
-                </div>
-
-
-                <!-- ------------------------- -->
-            </div>
         </div>
 
 
