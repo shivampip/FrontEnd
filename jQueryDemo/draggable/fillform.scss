@@ -1,7 +1,9 @@
 $backCol: rgb(240, 240, 240);
 $textCol: #000;
 $primaryCol: blueviolet;
-$mainFont: Verdana;
+$mainFont: Arial,
+Helvetica,
+sans-serif;
 //-----------------------------
 $workItemRadius: 10px;
 $workSidebarCol: #eee;
@@ -93,13 +95,13 @@ body {
 #title {
     width: 100%;
     padding-top: 20px;
-    padding-left: 30px;
+    padding-left: 15px;
     font-size: 2rem;
     outline: none;
     font-weight: bold;
     border: none;
     text-align: left;
-    font-family: Verdana;
+    font-family: $mainFont;
     user-select: none;
     /* Standard */
 }
