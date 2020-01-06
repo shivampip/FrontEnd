@@ -148,6 +148,11 @@ body {
             box-shadow: 0 0 5px 0 $primaryCol;
         }
     }
+    button,
+    input[type=submit] {
+        background-color: $primaryCol;
+        color: white;
+    }
 }
 
 @mixin editableHead($size) {

@@ -145,6 +145,12 @@ body {
           box-shadow: 0 0 5px 0 blueviolet;
 }
 
+.twoLayer button,
+.twoLayer input[type=submit] {
+  background-color: blueviolet;
+  color: white;
+}
+
 .heading {
   font-size: 1.5rem;
   outline: none;
