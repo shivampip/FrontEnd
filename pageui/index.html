@@ -19,9 +19,10 @@
 
             </div>
             <div id="settingBar">
-                <div id="settingIcon">
-
-                </div>
+                <div class="topSettingIcon" id="settingHideB"></div>
+            </div>
+            <div class="settingIcon" id="settingShowB">
+                <p>Settings</p>
             </div>
 
         </div>
@@ -31,7 +32,8 @@
         </div>
 
         <div id="rightWrapper">
-
+            <button class="stitched">Click Me</button><br>
+            <button class="stitched2">Click Me</button>
         </div>
 
     </div>
@@ -40,11 +42,49 @@
 
     <script>
         $(document).ready(function () {
-            $("#settingIcon").click(function () {
-                $("#settingBar").slideToggle(function (eve) {
-                    alert("opened");
+
+            $("#settingBar").slideUp(0);
+
+            $("#settingHideB").click(function () {
+                $("#settingBar").slideUp(1200);
+                setTimeout(
+                    function () {
+                        $("#settingShowB").show();
+                    }, 970);
+            })
+
+            $("#settingShowB").click(function () {
+                $("#settingBar").slideDown(1200, function (eve) {
                 });
-            });
+                setTimeout(
+                    function () {
+                        $("#settingShowB").hide();
+                    }, 200);
+
+            })
+
+
+
+            //$(".settingB").click(function () {
+            //  $("#settingBar").slideToggle(function (eve) {
+            //alert("opened");
+            //});
+
+            //if (settingBarShown) {
+            //    settingBarShown = false;
+            //    $("#settingBar").animate({
+            //        left: '0',
+            //        bottom: '0',
+            //        opacity: '1'
+            //    });
+            //} else {
+            //    settingBarShown = true;
+            //    $("#settingBar").animate({
+            //        left: '-300px',
+            //        bottom: '-300px',
+            //        opacity: '0'
+            //    });
+            //}
         });
     </script>
 </body>

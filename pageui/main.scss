@@ -65,13 +65,25 @@ body {
     bottom: $pageVertiGap;
     left: $pageVertiGap;
   }
-  #settingIcon {
-    width: 40%;
-    height: 20%;
-    background-color: $primaryVariantColor;
+  .settingIcon {
+    width: 80%;
+    height: 50px;
     position: absolute;
     bottom: $pageVertiGap;
     left: $pageVertiGap;
+    padding: 0;
+    background-color: $primaryColor;
+    color: white;
+    text-align: center;
+    p {
+      line-height: 50px;
+      text-align: center;
+    }
+  }
+  .topSettingIcon {
+    width: 100%;
+    height: 50px;
+    background-color: $primaryColor;
   }
 }
 
@@ -95,12 +107,45 @@ body {
   background-color: $surfaceColor;
 }
 
-.uc-initial-content {
-  width: 50px;
-  height: 40px;
-  background-color: $surfaceColor;
+.stitched {
+  padding: 20px;
+  margin: 10px;
+  background: #691f01;
+  color: #fff;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1.3em;
+  border: 2px dashed #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px #691f01, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  text-shadow: -1px -1px #aa3030;
+  font-weight: normal;
 }
 
-.uc-final-content {
-  background-color: $primaryVariantColor;
+.stitched2 {
+  padding: 7px 20px;
+  margin: 10px;
+  background: #691f01;
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: bold;
+  border: 2px dashed #d3d3d3;
+  border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-box-shadow: 0 0 0 4px #f8f8ff, 2px 1px 4px 4px rgba(10, 10, 0, 0.5);
+  -webkit-box-shadow: 0 0 0 4px #f8f8ff, 2px 1px 4px 4px rgba(10, 10, 0, 0.5);
+  box-shadow: 0 0 0 4px #691f01, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  //text-shadow: 1px 1px 2px #f8f8ff;
+  font-weight: normal;
+  float: left;
 }
