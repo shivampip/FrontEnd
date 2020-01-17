@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PageUI</title>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -31,7 +33,35 @@
         </div>
 
         <div id="pageWrapper">
-            <div id="page"></div>
+            <div id="page">
+                <div class="paper">
+                    <div class="paper-head">
+                        <input type="text" name="title" placeholder="Title" value="">
+                        <select name="visibility">
+                            <option value="private" {% if data.visibility == "private" %}selected="selected" {% endif %}>
+                                Private
+                            </option>
+                            <option value="public" {% if data.visibility == "public" %}selected="selected" {% endif %}>
+                                Public
+                            </option>
+                            <option value="followers" {% if data.visibility == "followers" %}selected="selected" {% endif %}>
+                                Followers
+                            </option>
+                        </select>
+                    </div>
+                    <div class="paper-body">
+                        <div class='lining'>
+                            <div class='paper-content'>
+                                <textarea id="writing_area" cols="10" name="body" placeholder="Start Writing..." class='boxsizingBorder'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="paper-footer">
+                        <input type="file" name="photo">
+                        <button type="submit">Create</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="rightWrapper">
