@@ -16,13 +16,16 @@
 
         <div id="leftWrapper">
             <div id="logoWrapper">
-
+                <img src="img/memory_ionc_modiddddddd.png" alt="Icon">
             </div>
             <div id="settingBar">
-                <div class="topSettingIcon" id="settingHideB"></div>
+                <div class="topSettingIcon" id="settingHideB">
+                    <img src="img/pencil_icon.png" alt="Theme Setting">
+                </div>
+                <div id="settingContent"></div>
             </div>
             <div class="settingIcon" id="settingShowB">
-                <p>Settings</p>
+                <img src="img/pencil_icon.png" alt="Theme Setting">
             </div>
 
         </div>
@@ -41,23 +44,22 @@
 
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             $("#settingBar").slideUp(0);
 
-            $("#settingHideB").click(function () {
+            $("#settingHideB").click(function() {
                 $("#settingBar").slideUp(1200);
                 setTimeout(
-                    function () {
+                    function() {
                         $("#settingShowB").show();
                     }, 970);
             })
 
-            $("#settingShowB").click(function () {
-                $("#settingBar").slideDown(1200, function (eve) {
-                });
+            $("#settingShowB").click(function() {
+                $("#settingBar").slideDown(1200, function(eve) {});
                 setTimeout(
-                    function () {
+                    function() {
                         $("#settingShowB").hide();
                     }, 200);
 
