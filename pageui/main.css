@@ -156,18 +156,38 @@ body {
 .paper {
   width: 100%;
   height: 100%;
-  background-color: orange;
+  background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%), url("https://www.csstextures.com/white-paper-2-T31.jpg");
+  background-repeat: repeat;
   -webkit-box-shadow: 0px 0px 5px 0px #333333;
           box-shadow: 0px 0px 5px 0px #333333;
 }
 
 .paper .paper-head {
   width: 100%;
-  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.paper .paper-head #dateWrapper {
+  width: 300px;
+  text-align: right;
+  padding: 10px;
+}
+
+.paper .paper-head #dateWrapper #dateP {
+  font-weight: bold;
+}
+
+.paper .paper-head #dateWrapper #timeP {
+  margin-top: 10px;
+  font-size: 1.5rem;
 }
 
 .paper .paper-head input[type=text] {
-  width: 70%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   height: 100%;
   background: none;
   border-radius: 0px;
@@ -214,7 +234,6 @@ body {
 .paper .paper-body {
   width: 100%;
   height: 100%;
-  background: white;
 }
 
 .paper .paper-body ::-webkit-input-placeholder {
@@ -234,7 +253,6 @@ body {
 }
 
 .paper .paper-footer {
-  background: white;
   width: 100%;
   text-align: center;
 }
@@ -247,7 +265,6 @@ body {
 .lining {
   width: 100%;
   height: 100%;
-  background: white;
   /* Begin The Redundancies */
   background-image: -ms-linear-gradient(0deg, transparent 5em, rgba(255, 0, 0, 0.2) 0, transparent 5.1em), -ms-linear-gradient(rgba(0, 0, 255, 0.3) 1px, transparent 0);
   -webkit-background-size: 100% 2em;

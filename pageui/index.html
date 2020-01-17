@@ -37,7 +37,12 @@
                 <div class="paper">
                     <div class="paper-head">
                         <input type="text" name="title" placeholder="Title" value="">
-                        <select name="visibility">
+                        <div id="dateWrapper">
+                            <p id="dateP">Saturday, 10th October 2020</p>
+                            <!-- <p id="dateP">10th October 2020</p> -->
+                            <!-- <p id="timeP">Tuesday 9pm</p> -->
+                        </div>
+                        <!-- <select name="visibility">
                             <option value="private" {% if data.visibility == "private" %}selected="selected" {% endif %}>
                                 Private
                             </option>
@@ -47,7 +52,7 @@
                             <option value="followers" {% if data.visibility == "followers" %}selected="selected" {% endif %}>
                                 Followers
                             </option>
-                        </select>
+                        </select> -->
                     </div>
                     <div class="paper-body">
                         <div class='lining'>
