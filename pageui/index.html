@@ -72,6 +72,7 @@
         <div id="rightWrapper">
             <button class="stitched">Click Me</button><br>
             <button class="stitched2">Click Me</button>
+            <div id="textD" contenteditable="true">I am Shivam Agrawal</div>
         </div>
 
     </div>
@@ -80,6 +81,10 @@
 
     <script>
         $(document).ready(function() {
+
+            function print(msg) {
+                console.log(msg);
+            }
 
             $("#settingBar").slideUp(0);
 
@@ -100,7 +105,49 @@
 
             })
 
+            $.fn.selectRange = function(start, end) {
+                var e = document.getElementById($(this).attr('id')); // I don't know why... but $(this) don't want to work today :-/
+                if (!e) return;
+                else if (e.setSelectionRange) {
+                    e.focus();
+                    e.setSelectionRange(start, end);
+                } /* WebKit */
+                else if (e.createTextRange) {
+                    var range = e.createTextRange();
+                    range.collapse(true);
+                    range.moveEnd('character', end);
+                    range.moveStart('character', start);
+                    range.select();
+                } /* IE */
+                else if (e.selectionStart) {
+                    e.selectionStart = start;
+                    e.selectionEnd = end;
+                }
+            };
 
+            $("#writing_area").keydown(function(eve) {
+                if (eve.keyCode == 8 || eve.keyCode == 46) {
+                    var cursorPos = $(this).prop('selectionStart');
+                    //alert('backspace trapped at ' + cursorPos);
+
+                    let text = $(this).val();
+                    let si = text.lastIndexOf(" ") + 1;
+                    let cword = text.slice(si, cursorPos);
+                    $(this).selectRange(si, cursorPos);
+                    document.execCommand('bold');
+                    print("Word: " + cword);
+
+
+                    return false; //disable its working
+                }
+            });
+
+
+            $(".stitched").click(function() {
+                print("Making bold");
+                document.execCommand('bold');
+                $("#writing_area").val("<strike>Hello</strike> World");
+            });
 
             //$(".settingB").click(function () {
             //  $("#settingBar").slideToggle(function (eve) {
