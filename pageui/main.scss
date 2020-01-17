@@ -10,7 +10,7 @@ $surfaceColor: #ffffff;
 $errorColor: #b00020;
 $transparentColor: #00000000;
 $pageSideGap: 25%;
-$pageVertiGap: 5px;
+$pageVertiGap: 2px;
 * {
     padding: 0px;
     margin: 0px;
@@ -179,10 +179,20 @@ body {
     // background-image: url(img/black-linen.png);
     // background-repeat: repeat;
     //==========================
-    background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%), url('https://www.csstextures.com/white-paper-2-T31.jpg');
+    // background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%), url('https://www.csstextures.com/white-paper-2-T31.jpg');
     // background-repeat: no-repeat;
     // background-size: cover;
-    background-repeat: repeat;
+    // background-repeat: repeat;
+    //==========================
+    // background: rgb(255, 255, 255);
+    // background: -webkit-radial-gradient(rgba(0, 0, 0, 0.1) 50%, rgba(255, 255, 255, 0.1) 50%), -webkit-linear-gradient(-45deg, rgba(253, 253, 253, 0.95), rgba(255, 255, 255, 0.95)), url('http://f.cl.ly/items/3h0j172n2i3q1z0t2G1P/noise.jpg');
+    // background-size: 3px 3px, auto auto, auto auto;
+    //==========================
+    background-image: url(img/paper.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    // filter: alpha(opacity=20);
+    filter: brightness(1.05);
     //==========================
     box-shadow: 0px 0px 5px 0px rgb(51, 51, 51);
     .paper-head {
