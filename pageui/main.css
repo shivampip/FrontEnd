@@ -173,7 +173,6 @@ body {
 }
 
 .paper .paper-head #dateWrapper {
-  width: 300px;
   text-align: right;
   padding: 10px;
 }
@@ -235,8 +234,8 @@ body {
 }
 
 .paper .paper-body {
-  width: 100%;
   height: 100%;
+  padding: 0 5px;
 }
 
 .paper .paper-body ::-webkit-input-placeholder {
@@ -277,12 +276,12 @@ body {
   background-size: 100% 2em;
 }
 
-.paper-content {
+.lining .paper-content {
   height: 100%;
   overflow: hidden;
 }
 
-.paper-content textarea {
+.lining .paper-content textarea {
   width: 100%;
   height: 100%;
   resize: none;
