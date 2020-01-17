@@ -13,294 +13,324 @@ $pageSideGap: 25%;
 $pageVertiGap: 2px;
 $linePadding: 5px;
 * {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 html,
 body {
-    height: 100%;
-    width: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    //background-color: $backgroundColor;
-    background-image: url("img/wood/wood2.jpg");
-    background-size: cover;
-    /* <------ */
-    background-repeat: no-repeat;
-    background-position: center center;
+  height: 100%;
+  width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  //background-color: $backgroundColor;
+  background-image: url("img/wood/wood2.jpg");
+  background-size: cover;
+  /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 #mainWrapper {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
 #pageWrapper {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    background-color: $transparentColor;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: $transparentColor;
 }
 
 #leftWrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    #logoWrapper {
-        width: 75%;
-        height: 100px;
-        //background: $primaryColor;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        img {
-            max-width: 100%;
-            //max-height: 100%;
-        }
+  width: 100%;
+  height: 100%;
+  position: relative;
+  #logoWrapper {
+    width: 75%;
+    height: 100px;
+    //background: $primaryColor;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    img {
+      max-width: 100%;
+      //max-height: 100%;
     }
-    #settingBar {
-        width: 80%;
-        height: 80%;
-        //background-color: $surfaceColor;
-        position: absolute;
-        bottom: $pageVertiGap;
-        left: $pageVertiGap;
-        overflow: hidden;
-        .topSettingIcon {
-            width: 100%;
-            height: 50px;
-            //background-color: $primaryColor;
-            //margin-top: -50px;
-            overflow: hidden;
-            img {
-                max-width: 100%;
-                //max-height: 100%;
-            }
-        }
-        #settingContent {
-            width: 100%;
-            height: 100%;
-            background-color: $surfaceColor;
-        }
+  }
+  #settingBar {
+    width: 80%;
+    height: 80%;
+    //background-color: $surfaceColor;
+    position: absolute;
+    bottom: $pageVertiGap;
+    left: $pageVertiGap;
+    overflow: hidden;
+    .topSettingIcon {
+      width: 100%;
+      height: 50px;
+      //background-color: $primaryColor;
+      //margin-top: -50px;
+      overflow: hidden;
+      img {
+        max-width: 100%;
+        //max-height: 100%;
+      }
     }
-    .settingIcon {
-        width: 80%;
-        height: 50px;
-        position: absolute;
-        bottom: $pageVertiGap;
-        left: $pageVertiGap;
-        padding: 0;
-        //background-color: $primaryColor;
-        color: white;
-        text-align: center;
-        overflow: hidden;
-        img {
-            max-width: 100%;
-            //max-height: 100%;
-        }
+    #settingContent {
+      width: 100%;
+      height: 100%;
+      background-color: $surfaceColor;
     }
+  }
+  .settingIcon {
+    width: 80%;
+    height: 50px;
+    position: absolute;
+    bottom: $pageVertiGap;
+    left: $pageVertiGap;
+    padding: 0;
+    //background-color: $primaryColor;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    img {
+      max-width: 100%;
+      //max-height: 100%;
+    }
+  }
 }
 
 #rightWrapper {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #page {
-    display: block;
-    position: absolute;
-    height: auto;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin-top: $pageVertiGap;
-    margin-bottom: $pageVertiGap;
-    margin-right: $pageSideGap;
-    margin-left: $pageSideGap;
-    background-color: $surfaceColor;
-    overflow: hidden; //sambhalkar
+  display: block;
+  position: absolute;
+  height: auto;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: $pageVertiGap;
+  margin-bottom: $pageVertiGap;
+  margin-right: $pageSideGap;
+  margin-left: $pageSideGap;
+  background-color: $surfaceColor;
+  overflow: hidden; //sambhalkar
 }
 
 .stitched {
-    padding: 20px;
-    margin: 10px;
-    background: #691f01;
-    color: #fff;
-    font-size: 21px;
-    font-weight: bold;
-    line-height: 1.3em;
-    border: 2px dashed #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 0 4px #691f01, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-    text-shadow: -1px -1px #aa3030;
-    font-weight: normal;
+  padding: 20px;
+  margin: 10px;
+  background: #691f01;
+  color: #fff;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1.3em;
+  border: 2px dashed #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px #691f01, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  text-shadow: -1px -1px #aa3030;
+  font-weight: normal;
 }
 
 .stitched2 {
-    padding: 7px 20px;
-    margin: 10px;
-    background: #691f01;
-    color: #ffffff;
-    font-size: 21px;
-    font-weight: bold;
-    border: 2px dashed #d3d3d3;
-    border-top-left-radius: 3px;
-    -moz-border-radius-topleft: 3px;
-    -webkit-border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    -moz-border-radius-bottomleft: 3px;
-    -webkit-border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    -moz-border-radius-bottomright: 3px;
-    -webkit-border-bottom-right-radius: 3px;
-    border-top-right-radius: 3px;
-    -moz-border-radius-topright: 3px;
-    -webkit-border-top-right-radius: 3px;
-    -moz-box-shadow: 0 0 0 4px #f8f8ff, 2px 1px 4px 4px rgba(10, 10, 0, 0.5);
-    -webkit-box-shadow: 0 0 0 4px #f8f8ff, 2px 1px 4px 4px rgba(10, 10, 0, 0.5);
-    box-shadow: 0 0 0 4px #691f01, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-    //text-shadow: 1px 1px 2px #f8f8ff;
-    font-weight: normal;
-    float: left;
+  padding: 7px 20px;
+  margin: 10px;
+  background: #691f01;
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: bold;
+  border: 2px dashed #d3d3d3;
+  border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-box-shadow: 0 0 0 4px #f8f8ff, 2px 1px 4px 4px rgba(10, 10, 0, 0.5);
+  -webkit-box-shadow: 0 0 0 4px #f8f8ff, 2px 1px 4px 4px rgba(10, 10, 0, 0.5);
+  box-shadow: 0 0 0 4px #691f01, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+  //text-shadow: 1px 1px 2px #f8f8ff;
+  font-weight: normal;
+  float: left;
 }
 
 ///=====================================================
 .paper {
+  width: 100%;
+  height: 100%;
+  //background-color: orange;
+  //=====Ppaper crumbled======
+  // background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%), url('https://www.csstextures.com/crumpled-paper-T33.jpg');
+  // background-repeat: repeat;
+  //==========================
+  // background-image: url(img/frbric_texture.png);
+  // background-image: url(img/black-linen.png);
+  // background-repeat: repeat;
+  //==========================
+  // background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%), url('https://www.csstextures.com/white-paper-2-T31.jpg');
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-repeat: repeat;
+  //==========================
+  // background: rgb(255, 255, 255);
+  // background: -webkit-radial-gradient(rgba(0, 0, 0, 0.1) 50%, rgba(255, 255, 255, 0.1) 50%), -webkit-linear-gradient(-45deg, rgba(253, 253, 253, 0.95), rgba(255, 255, 255, 0.95)), url('http://f.cl.ly/items/3h0j172n2i3q1z0t2G1P/noise.jpg');
+  // background-size: 3px 3px, auto auto, auto auto;
+  //==========================
+  background-image: url(img/paper.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  // filter: alpha(opacity=20);
+  filter: brightness(1.05);
+  //==========================
+  box-shadow: 0px 0px 5px 0px rgb(51, 51, 51);
+  .paper-head {
+    //height: 15%;
     width: 100%;
+    //background: white;
+    display: flex;
+    #dateWrapper {
+      //width: 300px;
+      //background-color: greenyellow;
+      text-align: right;
+      padding: 10px;
+      #dateP {
+        font-weight: bold;
+      }
+      #timeP {
+        margin-top: 10px;
+        font-size: 1.5rem;
+      }
+    }
+    input[type="text"] {
+      flex: 1;
+      height: 100%;
+      background: none;
+      border-radius: 0px;
+      font: 400 1.7em/32px "Oleo Script", Helvetica, sans-serif;
+      padding: 45px 20px 20px 15px;
+      margin-left: 5px;
+      border: none;
+      color: rgb(82, 82, 82);
+      &:focus {
+        outline: none;
+      }
+    }
+    select {
+      padding: 15px;
+      margin-bottom: 2px;
+      width: auto;
+      font: 400 1.2em/32px "Oleo Script", Helvetica, sans-serif;
+      border: none;
+      background: none;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .paper-head ::placeholder {
+    color: rgb(168, 168, 168);
+  }
+  .paper-body {
+    //width: 100%;
     height: 100%;
-    //background-color: orange;
-    //=====Ppaper crumbled======
-    // background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%), url('https://www.csstextures.com/crumpled-paper-T33.jpg');
-    // background-repeat: repeat;
-    //==========================
-    // background-image: url(img/frbric_texture.png);
-    // background-image: url(img/black-linen.png);
-    // background-repeat: repeat;
-    //==========================
-    // background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%), url('https://www.csstextures.com/white-paper-2-T31.jpg');
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // background-repeat: repeat;
-    //==========================
-    // background: rgb(255, 255, 255);
-    // background: -webkit-radial-gradient(rgba(0, 0, 0, 0.1) 50%, rgba(255, 255, 255, 0.1) 50%), -webkit-linear-gradient(-45deg, rgba(253, 253, 253, 0.95), rgba(255, 255, 255, 0.95)), url('http://f.cl.ly/items/3h0j172n2i3q1z0t2G1P/noise.jpg');
-    // background-size: 3px 3px, auto auto, auto auto;
-    //==========================
-    background-image: url(img/paper.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    // filter: alpha(opacity=20);
-    filter: brightness(1.05);
-    //==========================
-    box-shadow: 0px 0px 5px 0px rgb(51, 51, 51);
-    .paper-head {
-        //height: 15%;
-        width: 100%;
-        //background: white;
-        display: flex;
-        #dateWrapper {
-            //width: 300px;
-            //background-color: greenyellow;
-            text-align: right;
-            padding: 10px;
-            #dateP {
-                font-weight: bold;
-            }
-            #timeP {
-                margin-top: 10px;
-                font-size: 1.5rem;
-            }
-        }
-        input[type=text] {
-            flex: 1;
-            height: 100%;
-            background: none;
-            border-radius: 0px;
-            font: 400 1.7em/32px 'Oleo Script', Helvetica, sans-serif;
-            padding: 45px 20px 20px 15px;
-            margin-left: 5px;
-            border: none;
-            color: rgb(82, 82, 82);
-            &:focus {
-                outline: none;
-            }
-        }
-        select {
-            padding: 15px;
-            margin-bottom: 2px;
-            width: auto;
-            font: 400 1.2em/32px 'Oleo Script', Helvetica, sans-serif;
-            border: none;
-            background: none;
-            &:focus {
-                outline: none;
-            }
-        }
+    //background: white;
+    padding: 0 $linePadding;
+  }
+  .paper-body ::placeholder {
+    color: rgb(168, 168, 168);
+  }
+  .paper-footer {
+    //background: white;
+    width: 100%;
+    text-align: center;
+    button {
+      width: 20%;
+      margin: 5px auto;
     }
-    .paper-head ::placeholder {
-        color: rgb(168, 168, 168);
-    }
-    .paper-body {
-        //width: 100%;
-        height: 100%;
-        //background: white;
-        padding: 0 $linePadding;
-    }
-    .paper-body ::placeholder {
-        color: rgb(168, 168, 168);
-    }
-    .paper-footer {
-        //background: white;
-        width: 100%;
-        text-align: center;
-        button {
-            width: 20%;
-            margin: 5px auto;
-        }
-    }
+  }
 }
 
 .lining {
-    width: 100%;
+  width: 100%;
+  height: 100%;
+  //background: white;
+  /* Begin The Redundancies */
+  background-image: -webkit-linear-gradient(
+      0deg,
+      transparent 5em,
+      rgba(255, 0, 0, 0.2) 0,
+      transparent 5.1em
+    ),
+    -webkit-linear-gradient(rgba(0, 0, 255, 0.3) 1px, transparent 0);
+  background-image: -moz-linear-gradient(
+      0deg,
+      transparent 5em,
+      rgba(255, 0, 0, 0.2) 0,
+      transparent 5.1em
+    ),
+    -moz-linear-gradient(rgba(0, 0, 255, 0.3) 1px, transparent 0);
+  background-image: -o-linear-gradient(
+      0deg,
+      transparent 5em,
+      rgba(255, 0, 0, 0.2) 0,
+      transparent 5.1em
+    ),
+    -o-linear-gradient(rgba(0, 0, 255, 0.3) 1px, transparent 0);
+  background-image: -ms-linear-gradient(
+      0deg,
+      transparent 5em,
+      rgba(255, 0, 0, 0.2) 0,
+      transparent 5.1em
+    ),
+    -ms-linear-gradient(rgba(0, 0, 255, 0.3) 1px, transparent 0);
+  -webkit-background-size: 100% 2em;
+  -moz-background-size: 100% 2em;
+  /* In a perfect world... */
+  background-image: linear-gradient(
+      0deg,
+      transparent 5em,
+      rgba(255, 0, 0, 0.2) 0,
+      transparent 5.1em
+    ),
+    linear-gradient(rgba(0, 0, 255, 0.3) 1px, transparent 0);
+  background-size: 100% 2em;
+  .paper-content {
     height: 100%;
-    //background: white;
-    /* Begin The Redundancies */
-    background-image: -webkit-linear-gradient(0deg, transparent 5em, rgba(255, 0, 0, .2) 0, transparent 5.1em), -webkit-linear-gradient(rgba(0, 0, 255, .3) 1px, transparent 0);
-    background-image: -moz-linear-gradient(0deg, transparent 5em, rgba(255, 0, 0, .2) 0, transparent 5.1em), -moz-linear-gradient(rgba(0, 0, 255, .3) 1px, transparent 0);
-    background-image: -o-linear-gradient(0deg, transparent 5em, rgba(255, 0, 0, .2) 0, transparent 5.1em), -o-linear-gradient(rgba(0, 0, 255, .3) 1px, transparent 0);
-    background-image: -ms-linear-gradient(0deg, transparent 5em, rgba(255, 0, 0, .2) 0, transparent 5.1em), -ms-linear-gradient(rgba(0, 0, 255, .3) 1px, transparent 0);
-    -webkit-background-size: 100% 2em;
-    -moz-background-size: 100% 2em;
-    /* In a perfect world... */
-    background-image: linear-gradient(0deg, transparent 5em, rgba(255, 0, 0, .2) 0, transparent 5.1em), linear-gradient(rgba(0, 0, 255, .3) 1px, transparent 0);
-    background-size: 100% 2em;
-    .paper-content {
-        height: 100%;
-        overflow: hidden;
-        textarea {
-            width: 100%;
-            height: 100%;
-            resize: none;
-            padding: 20px;
-            padding-top: 9px;
-            line-height: 35px;
-            background: none;
-            overflow: hidden;
-            display: block;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            border: none;
-            outline: none;
-            /*font: 400 1.4em/32px 'Oleo Script', Helvetica, sans-serif;*/
-            // font-family: 'Patrick Hand', cursive;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 1.4em;
-            line-height: 32px;
-            color: #3d3d3d;
-        }
+    overflow: hidden;
+    #writing_area {
+      width: 100%;
+      height: 100%;
+      resize: none;
+      padding: 20px;
+      padding-top: 9px;
+      line-height: 35px;
+      background: none;
+      overflow: hidden;
+      display: block;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      // font: 400 1.4em/32px "Oleo Script", Helvetica, sans-serif;
+      font-family: "Patrick Hand", cursive;
+      //font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 1.4em;
+      line-height: 32px;
+      color: #3d3d3d;
     }
+  }
 }

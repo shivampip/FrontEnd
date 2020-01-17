@@ -57,7 +57,9 @@
                     <div class="paper-body">
                         <div class='lining'>
                             <div class='paper-content'>
-                                <textarea id="writing_area" cols="10" name="body" placeholder="Start Writing..." class='boxsizingBorder'></textarea>
+                                <div id="writing_area" cols="10" name="body" placeholder="Start Writing..."
+                                    class='boxsizingBorder' contenteditable="true">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -80,7 +82,7 @@
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             function print(msg) {
                 console.log(msg);
@@ -88,24 +90,24 @@
 
             $("#settingBar").slideUp(0);
 
-            $("#settingHideB").click(function() {
+            $("#settingHideB").click(function () {
                 $("#settingBar").slideUp(1200);
                 setTimeout(
-                    function() {
+                    function () {
                         $("#settingShowB").show();
                     }, 970);
-            })
+            });
 
-            $("#settingShowB").click(function() {
-                $("#settingBar").slideDown(1200, function(eve) {});
+            $("#settingShowB").click(function () {
+                $("#settingBar").slideDown(1200, function (eve) { });
                 setTimeout(
-                    function() {
+                    function () {
                         $("#settingShowB").hide();
                     }, 200);
 
-            })
+            });
 
-            $.fn.selectRange = function(start, end) {
+            $.fn.selectRange = function (start, end) {
                 var e = document.getElementById($(this).attr('id')); // I don't know why... but $(this) don't want to work today :-/
                 if (!e) return;
                 else if (e.setSelectionRange) {
@@ -125,50 +127,115 @@
                 }
             };
 
-            $("#writing_area").keydown(function(eve) {
+            jQuery.fn.selectText = function (start, end) {
+
+                var doc = document;
+                var element = this[0];
+                console.log(this, element);
+                if (doc.body.createTextRange) {
+                    print("Create text range");
+                    var range = document.body.createTextRange();
+                    //range.moveToElementText(element);
+                    range.collapse(true);
+                    range.moveEnd('character', end);
+                    range.moveStart('character', start);
+                    range.select();
+                } else if (window.getSelection) {
+                    print("window select");
+                    var selection = window.getSelection();
+                    var range = document.createRange();
+                    range.setStart(element, start);
+                    range.setEnd(element, end);
+                    //range.selectNodeContents(element);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                }
+            };
+
+            function getCaretPosition() {
+                if (window.getSelection && window.getSelection().getRangeAt) {
+                    var range = window.getSelection().getRangeAt(0);
+                    var selectedObj = window.getSelection();
+                    var rangeCount = 0;
+                    var childNodes = selectedObj.anchorNode.parentNode.childNodes;
+                    for (var i = 0; i < childNodes.length; i++) {
+                        if (childNodes[i] == selectedObj.anchorNode) {
+                            break;
+                        }
+                        if (childNodes[i].outerHTML)
+                            rangeCount += childNodes[i].outerHTML.length;
+                        else if (childNodes[i].nodeType == 3) {
+                            rangeCount += childNodes[i].textContent.length;
+                        }
+                    }
+                    return range.startOffset + rangeCount;
+                }
+                return -1;
+            }
+
+            function positionCursor(tag, pos) {
+
+                //var tag = document.getElementById("editable");
+
+                // Creates range object 
+                var setpos = document.createRange();
+
+                // Creates object for selection 
+                var set = window.getSelection();
+
+                // Set start position of range 
+                //setpos.setStart(tag.childNodes[0], 12);
+                setpos.setStart(tag.childNodes[0], pos);
+
+                // Collapse range within its boundary points 
+                // Returns boolean 
+                setpos.collapse(true);
+
+                // Remove all ranges set 
+                set.removeAllRanges();
+
+                // Add range with respect to range object. 
+                set.addRange(setpos);
+
+                // Set cursor on focus 
+                tag.focus();
+            }
+
+            $("#writing_area").keydown(function (eve) {
                 if (eve.keyCode == 8 || eve.keyCode == 46) {
-                    var cursorPos = $(this).prop('selectionStart');
+                    //var cp = $(this).prop('selectionStart');
+                    var cp = getCaretPosition($(this));
+                    let text = $(this).text();
+                    let char_ap_pp = text.slice(cp - 1, cp);
+                    print("CP: " + cp);
+                    print("PP is: " + char_ap_pp);
+
+                    let new_text = text.slice(0, cp - 1) + text.slice(cp - 1, text.length).strike() + " ";
+                    $(this).html(new_text);
+
+                    positionCursor(document.getElementById("writing_area"), cp - 1);
                     //alert('backspace trapped at ' + cursorPos);
 
-                    let text = $(this).val();
-                    let si = text.lastIndexOf(" ") + 1;
-                    let cword = text.slice(si, cursorPos);
-                    $(this).selectRange(si, cursorPos);
-                    document.execCommand('bold');
-                    print("Word: " + cword);
+                    //let text = $(this).text();
+                    //let si = text.lastIndexOf(" ") + 1;
+                    //let cword = text.slice(si, cursorPos);
+                    //$(this).selectRange(si, cursorPos);
+                    //$(this).selectText(si, cursorPos);
+                    //document.execCommand('bold');
+                    //print("Word: " + cword);
 
 
+                    print("returning false");
                     return false; //disable its working
                 }
             });
 
 
-            $(".stitched").click(function() {
+            $(".stitched").click(function () {
                 print("Making bold");
                 document.execCommand('bold');
-                $("#writing_area").val("<strike>Hello</strike> World");
+                $("#writing_area").html("Hello World".strike() + " a");
             });
-
-            //$(".settingB").click(function () {
-            //  $("#settingBar").slideToggle(function (eve) {
-            //alert("opened");
-            //});
-
-            //if (settingBarShown) {
-            //    settingBarShown = false;
-            //    $("#settingBar").animate({
-            //        left: '0',
-            //        bottom: '0',
-            //        opacity: '1'
-            //    });
-            //} else {
-            //    settingBarShown = true;
-            //    $("#settingBar").animate({
-            //        left: '-300px',
-            //        bottom: '-300px',
-            //        opacity: '0'
-            //    });
-            //}
         });
     </script>
 </body>
