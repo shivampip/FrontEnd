@@ -18,7 +18,7 @@ def echo(request):
         if request.is_ajax():
             try:
                 data= json.loads(request.body)
-                print("Hello "+data['fname'])
+                #print("Hello "+data['fname'])
                 return JsonResponse({
                     "status": "success",
                     "data": data

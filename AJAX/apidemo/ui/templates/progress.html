@@ -1,0 +1,132 @@
+<!-- REF: https://jqueryui.com/slider/#custom-handle -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        h3 {
+            color: purple;
+        }
+        
+        #progressbar .ui-progressbar-value {
+            background-color: #ccc;
+        }
+    </style>
+    <title>Django AJAX</title>
+    {% load staticfiles %}
+
+    <!-- ########################## -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- ########################## -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- ########################## -->
+    <script src="{% static 'js/jquery.star-rating-svg.js' %}"></script>
+    <!-- ########################## -->
+
+</head>
+
+<body>
+    <h3>Welcome to AJAXz</h3>
+
+    <p style="display: none;">csfr token: {% csrf_token %}</p>
+
+    <!-- ########################## -->
+    <div id="progressbar"></div><br>
+    <button id="numButton">Random Value - Determinate</button>
+    <button id="falseButton">Indeterminate</button>
+    <button id="colorButton">Random Color</button>
+    <!-- ########################## -->
+
+
+
+    <script>
+        function print(msg) {
+            console.log(msg);
+        }
+        $(document).ready(function() {
+
+            //######################
+            var myVal = -1;
+            $("#progressbar").progressbar({
+                value: false
+            });
+            $("button").on("click", function(event) {
+                var target = $(event.target),
+                    progressbar = $("#progressbar"),
+                    progressbarValue = progressbar.find(".ui-progressbar-value");
+
+                if (target.is("#numButton")) {
+                    progressbar.progressbar("option", {
+                        value: Math.floor(Math.random() * 100)
+                    });
+                } else if (target.is("#colorButton")) {
+                    progressbarValue.css({
+                        "background": '#' + Math.floor(Math.random() * 16777215).toString(16)
+                    });
+                } else if (target.is("#falseButton")) {
+                    progressbar.progressbar("option", "value", false);
+                }
+            });
+            //######################
+
+            //======Setup========
+            print("Setting ajax upp");
+            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+            print("CSRF Token: " + csrftoken);
+
+            function csrfSafeMethod(method) {
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+            //===================
+
+            $("#sendB").click((eve) => {
+                if (myVal == -1) {
+                    alert("Please give ratings");
+                    return false;
+                }
+                let data = {
+                    "myVal": myVal
+                }
+
+                print("Request data:-")
+                print(data);
+                print("Sending POST request");
+                $.ajax({
+                    method: "POST",
+                    url: "/api/echo",
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: "json",
+                    data: JSON.stringify(data),
+                    success: function(data) {
+                        print("response success");
+                        print("Response data:-");
+                        print(data);
+                    },
+                    failure: function(errMsg) {
+                        print("response error");
+                        print(errMsg);
+                    },
+                    complete: function(data) {
+                        print("Request completed");
+                    }
+                });
+            }); //sendBEND
+
+
+
+        });
+    </script>
+</body>
+
+</html>

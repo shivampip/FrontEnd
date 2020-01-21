@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        h3 {
+            color: purple;
+        }
+    </style>
+    <title>Django AJAX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h3>Welcome to AJAX</h3>
+
+    <p style="display: none;">csfr token: {% csrf_token %}</p>
+
+    <input type="text" name="fname" placeholder="First Name">
+    <input type="text" name="lname" placeholder="Last Name">
+    <button id="sendB">Send</button>
+
+
+    <script>
+        function print(msg) {
+            console.log(msg);
+        }
+        $(document).ready(function() {
+
+            //======Setup========
+            print("Setting ajax upp");
+            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+            print("CSRF Token: " + csrftoken);
+
+            function csrfSafeMethod(method) {
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+            //===================
+
+            $("#sendB").click((eve) => {
+                let data = {
+                    "fname": $("input[name='fname']").val(),
+                    "lname": $("input[name='lname']").val()
+                }
+
+                print("Request data:-")
+                print(data);
+                print("Sending POST request");
+                $.ajax({
+                    method: "POST",
+                    url: "/api/echo",
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: "json",
+                    data: JSON.stringify(data),
+                    success: function(data) {
+                        print("response success");
+                        print("Response data:-");
+                        print(data);
+                    },
+                    failure: function(errMsg) {
+                        print("response error");
+                        print(errMsg);
+                    },
+                    complete: function(data) {
+                        print("Request completed");
+                    }
+                });
+            }); //sendBEND
+
+
+
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
